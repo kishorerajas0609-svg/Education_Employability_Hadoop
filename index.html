@@ -1,0 +1,3085 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0B111E">
+  <title>EDU-PREDICT | College Placement Officer Intelligence System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=2.2">
+  <style id="alignmentStyles">
+    
+    .gap-search-control-panel {
+      background: var(--bg-surface) !important;
+      border: 1px solid var(--border-subtle) !important;
+      border-radius: 16px !important;
+      padding: 24px 28px !important;
+      margin-bottom: 24px !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 18px !important;
+      box-sizing: border-box !important;
+    }
+
+    .gap-panel-top-row {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+      gap: 14px !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+      padding-bottom: 14px !important;
+    }
+
+    .gap-panel-title-wrap {
+      display: flex !important;
+      align-items: center !important;
+      gap: 14px !important;
+    }
+
+    .panel-badge-icon {
+      font-size: 20px !important;
+      width: 42px !important;
+      height: 42px !important;
+      border-radius: 10px !important;
+      background: rgba(6, 182, 212, 0.12) !important;
+      border: 1px solid rgba(6, 182, 212, 0.25) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      flex-shrink: 0 !important;
+    }
+
+    .panel-title-compact {
+      font-family: var(--font-heading) !important;
+      font-size: 17px !important;
+      font-weight: 700 !important;
+      color: var(--text-primary) !important;
+      margin: 0 0 2px 0 !important;
+    }
+
+    .panel-sub-compact {
+      font-size: 13px !important;
+      color: var(--text-secondary) !important;
+      margin: 0 !important;
+    }
+
+    .gap-action-buttons {
+      display: flex !important;
+      align-items: center !important;
+    }
+
+    .gap-primary-search-box {
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    .prominent-search-wrapper {
+      flex: 1 !important;
+      position: relative !important;
+      display: flex !important;
+      align-items: center !important;
+      width: 100% !important;
+    }
+
+    .prominent-search-wrapper .search-icon {
+      position: absolute !important;
+      left: 16px !important;
+      font-size: 16px !important;
+      color: var(--text-muted) !important;
+      pointer-events: none !important;
+      z-index: 2 !important;
+    }
+
+    .prominent-search-input {
+      width: 100% !important;
+      height: 46px !important;
+      background: var(--bg-secondary) !important;
+      border: 1px solid var(--border-subtle) !important;
+      border-radius: 10px !important;
+      padding: 0 44px 0 46px !important;
+      font-size: 14px !important;
+      color: var(--text-primary) !important;
+      box-sizing: border-box !important;
+      transition: var(--transition) !important;
+    }
+
+    .prominent-search-input:focus {
+      border-color: var(--accent-cyan) !important;
+      background: rgba(15, 23, 42, 0.95) !important;
+      box-shadow: 0 0 0 3px rgba(6, 182, 212, 0.2) !important;
+    }
+
+    .btn-search-action {
+      height: 46px !important;
+      padding: 0 26px !important;
+      font-size: 14px !important;
+      font-weight: 700 !important;
+      white-space: nowrap !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      border-radius: 10px !important;
+      flex-shrink: 0 !important;
+      cursor: pointer !important;
+    }
+
+    .btn-clear-input {
+      position: absolute !important;
+      right: 14px !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      background: transparent !important;
+      border: none !important;
+      color: var(--text-muted) !important;
+      font-size: 14px !important;
+      cursor: pointer !important;
+      padding: 4px !important;
+      border-radius: 50% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      z-index: 2 !important;
+    }
+
+    /* 5-Column Clean Horizontal Filter Controls */
+    .gap-filters-horizontal-grid {
+      display: grid !important;
+      grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+      gap: 14px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    .gap-filter-field {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 6px !important;
+      min-width: 0 !important;
+    }
+
+    .gap-filter-field label {
+      font-size: 11.5px !important;
+      font-weight: 700 !important;
+      color: var(--text-secondary) !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.04em !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 5px !important;
+      white-space: nowrap !important;
+      overflow: hidden !important;
+      text-overflow: ellipsis !important;
+    }
+
+    .gap-filter-field select,
+    .gap-filter-field .form-select-sm {
+      height: 40px !important;
+      width: 100% !important;
+      font-size: 13px !important;
+      background: var(--bg-secondary) !important;
+      border: 1px solid var(--border-subtle) !important;
+      border-radius: 8px !important;
+      color: var(--text-primary) !important;
+      padding: 0 12px !important;
+      cursor: pointer !important;
+      transition: var(--transition) !important;
+      box-sizing: border-box !important;
+    }
+
+    .gap-filter-field select:focus {
+      border-color: var(--accent-cyan) !important;
+      box-shadow: 0 0 0 2px rgba(6, 182, 212, 0.2) !important;
+    }
+
+    /* Status Bar */
+    .gap-active-status-bar {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+      gap: 12px !important;
+      padding-top: 14px !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+    }
+
+    .active-chips-wrap {
+      display: flex !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+      gap: 8px !important;
+    }
+
+    .active-chips-label {
+      font-size: 12px !important;
+      color: var(--text-muted) !important;
+      font-weight: 600 !important;
+    }
+
+    .gap-status-count {
+      font-size: 12.5px !important;
+      color: var(--accent-cyan) !important;
+      font-weight: 600 !important;
+    }
+
+    /* ========================================================
+       PUBLIC HOMEPAGE ALIGNMENT FIXES (SECTIONS B TO F)
+    ======================================================== */
+    .public-content-section {
+      max-width: 1200px !important;
+      margin: 0 auto !important;
+      padding: 70px 24px !important;
+      scroll-margin-top: 70px !important;
+      box-sizing: border-box !important;
+    }
+
+    .section-container {
+      max-width: 1140px !important;
+      margin: 0 auto !important;
+    }
+
+    .section-header-centered {
+      text-align: center !important;
+      max-width: 800px !important;
+      margin: 0 auto 40px auto !important;
+    }
+
+    .section-kicker {
+      display: inline-block !important;
+      font-size: 11.5px !important;
+      font-weight: 700 !important;
+      letter-spacing: 1.2px !important;
+      text-transform: uppercase !important;
+      color: var(--accent-cyan) !important;
+      background: rgba(6, 182, 212, 0.1) !important;
+      border: 1px solid rgba(6, 182, 212, 0.25) !important;
+      padding: 5px 14px !important;
+      border-radius: 9999px !important;
+      margin-bottom: 14px !important;
+    }
+
+    .section-title {
+      font-family: var(--font-heading) !important;
+      font-size: 34px !important;
+      font-weight: 800 !important;
+      color: var(--text-primary) !important;
+      line-height: 1.25 !important;
+      margin-bottom: 14px !important;
+      letter-spacing: -0.5px !important;
+    }
+
+    .section-divider-bar {
+      width: 56px !important;
+      height: 3px !important;
+      background: var(--grad-primary) !important;
+      border-radius: 9999px !important;
+      margin: 0 auto 20px auto !important;
+    }
+
+    .section-intro-text {
+      font-size: 15.5px !important;
+      line-height: 1.7 !important;
+      color: var(--text-secondary) !important;
+      max-width: 760px !important;
+      margin: 0 auto !important;
+    }
+
+    /* Section B: Narrative Card */
+    .about-narrative-card {
+      background: var(--bg-surface) !important;
+      border: 1px solid var(--border-subtle) !important;
+      border-left: 4px solid var(--accent-cyan) !important;
+      border-radius: 16px !important;
+      padding: 36px 40px !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 16px !important;
+    }
+
+    .narrative-paragraph {
+      font-size: 16px !important;
+      line-height: 1.75 !important;
+      color: var(--text-primary) !important;
+      margin: 0 !important;
+    }
+
+    /* Section C: Why Education & Employability Matter 3 Cards Grid */
+    .three-cards-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      gap: 24px !important;
+      margin-top: 10px !important;
+    }
+
+    .value-card {
+      background: var(--bg-surface) !important;
+      border: 1px solid var(--border-subtle) !important;
+      border-radius: 16px !important;
+      padding: 32px 28px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      transition: var(--transition) !important;
+      position: relative !important;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    .value-card:hover {
+      transform: translateY(-4px) !important;
+      border-color: rgba(6, 182, 212, 0.45) !important;
+      box-shadow: 0 0 25px rgba(6, 182, 212, 0.2) !important;
+    }
+
+    .value-card-icon {
+      width: 52px !important;
+      height: 52px !important;
+      border-radius: 12px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 24px !important;
+      margin-bottom: 20px !important;
+    }
+
+    .value-card-icon.icon-cyan {
+      background: rgba(6, 182, 212, 0.12) !important;
+      border: 1px solid rgba(6, 182, 212, 0.3) !important;
+    }
+
+    .value-card-icon.icon-purple {
+      background: rgba(139, 92, 246, 0.12) !important;
+      border: 1px solid rgba(139, 92, 246, 0.3) !important;
+    }
+
+    .value-card-icon.icon-emerald {
+      background: rgba(16, 185, 129, 0.12) !important;
+      border: 1px solid rgba(16, 185, 129, 0.3) !important;
+    }
+
+    .value-card-title {
+      font-family: var(--font-heading) !important;
+      font-size: 19px !important;
+      font-weight: 700 !important;
+      color: var(--text-primary) !important;
+      margin-bottom: 12px !important;
+    }
+
+    .value-card-desc {
+      font-size: 14px !important;
+      line-height: 1.65 !important;
+      color: var(--text-secondary) !important;
+      margin: 0 !important;
+    }
+
+    /* Section D: 4 Steps Grid */
+    .four-steps-grid {
+      display: grid !important;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      gap: 20px !important;
+      margin-top: 10px !important;
+    }
+
+    .step-card {
+      background: var(--bg-surface) !important;
+      border: 1px solid var(--border-subtle) !important;
+      border-radius: 14px !important;
+      padding: 28px 22px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+      transition: var(--transition) !important;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+    }
+
+    .step-card:hover {
+      transform: translateY(-3px) !important;
+      border-color: rgba(139, 92, 246, 0.45) !important;
+      box-shadow: 0 0 25px rgba(139, 92, 246, 0.25) !important;
+    }
+
+    .step-number-badge {
+      width: 38px !important;
+      height: 38px !important;
+      border-radius: 50% !important;
+      background: var(--grad-primary) !important;
+      color: #ffffff !important;
+      font-weight: 800 !important;
+      font-size: 15px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      box-shadow: 0 2px 10px rgba(6, 182, 212, 0.35) !important;
+    }
+
+    .step-card-title {
+      font-family: var(--font-heading) !important;
+      font-size: 16px !important;
+      font-weight: 700 !important;
+      color: var(--text-primary) !important;
+      margin: 0 !important;
+    }
+
+    .step-card-desc {
+      font-size: 13.5px !important;
+      line-height: 1.6 !important;
+      color: var(--text-secondary) !important;
+      margin: 0 !important;
+    }
+
+    /* Section E: CTA Banner */
+    .cta-banner-section {
+      padding-top: 40px !important;
+      padding-bottom: 50px !important;
+    }
+
+    .cta-banner-box {
+      background: linear-gradient(135deg, rgba(19, 29, 49, 0.95) 0%, rgba(139, 92, 246, 0.18) 100%) !important;
+      border: 1px solid rgba(6, 182, 212, 0.35) !important;
+      border-radius: 24px !important;
+      padding: 56px 40px !important;
+      text-align: center !important;
+      position: relative !important;
+      overflow: hidden !important;
+      box-shadow: 0 0 35px rgba(6, 182, 212, 0.2) !important;
+    }
+
+    .cta-title {
+      font-family: var(--font-heading) !important;
+      font-size: 32px !important;
+      font-weight: 800 !important;
+      color: var(--text-primary) !important;
+      margin-bottom: 14px !important;
+    }
+
+    .cta-desc {
+      font-size: 16px !important;
+      color: var(--text-secondary) !important;
+      max-width: 640px !important;
+      margin: 0 auto 30px auto !important;
+      line-height: 1.65 !important;
+    }
+
+    .cta-btn-wrap {
+      display: flex !important;
+      justify-content: center !important;
+    }
+
+    #ctaAccessDashboardBtn {
+      background: var(--grad-primary) !important;
+      color: #ffffff !important;
+      font-weight: 700 !important;
+      font-size: 15px !important;
+      padding: 14px 34px !important;
+      border-radius: 9999px !important;
+      box-shadow: 0 0 25px rgba(6, 182, 212, 0.35) !important;
+      border: none !important;
+      cursor: pointer !important;
+    }
+
+    /* Section F: Public Footer */
+    .public-site-footer {
+      border-top: 1px solid var(--border-subtle) !important;
+      background: var(--bg-secondary) !important;
+      padding: 50px 24px 36px 24px !important;
+      margin-top: 60px !important;
+    }
+
+    .footer-container {
+      max-width: 1140px !important;
+      margin: 0 auto !important;
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: flex-start !important;
+      flex-wrap: wrap !important;
+      gap: 36px !important;
+    }
+
+    .footer-brand-col {
+      flex: 1 !important;
+      min-width: 280px !important;
+      max-width: 480px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 8px !important;
+    }
+
+    .footer-project-tagline {
+      font-size: 13.5px !important;
+      color: var(--accent-cyan) !important;
+      font-weight: 600 !important;
+      margin: 4px 0 0 0 !important;
+    }
+
+    .footer-purpose-text {
+      font-size: 13px !important;
+      color: var(--text-secondary) !important;
+      line-height: 1.6 !important;
+      margin: 0 !important;
+    }
+
+    .footer-privacy-col {
+      flex: 1 !important;
+      min-width: 280px !important;
+      max-width: 520px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 8px !important;
+    }
+
+    .privacy-badge {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      font-size: 12.5px !important;
+      font-weight: 700 !important;
+      color: var(--accent-emerald) !important;
+    }
+
+    .footer-privacy-text {
+      font-size: 12.5px !important;
+      color: var(--text-muted) !important;
+      line-height: 1.6 !important;
+      margin: 0 !important;
+    }
+
+    .footer-copyright {
+      font-size: 12px !important;
+      color: var(--text-muted) !important;
+      margin-top: 6px !important;
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 1100px) {
+      .gap-filters-horizontal-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .three-cards-grid, .four-steps-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .footer-container {
+        flex-direction: column !important;
+        gap: 24px !important;
+      }
+      .gap-filters-horizontal-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .gap-primary-search-box {
+        flex-direction: column !important;
+        align-items: stretch !important;
+      }
+      .btn-search-action {
+        width: 100% !important;
+        justify-content: center !important;
+      }
+    }
+
+    /* ========================================================
+       DEDICATED ABOUT SCREEN STYLES
+    ======================================================== */
+    .about-screen-container {
+      max-width: 1140px !important;
+      margin: 0 auto !important;
+      padding: 20px 0 60px 0 !important;
+    }
+
+    .about-top-bar {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      flex-wrap: wrap !important;
+      gap: 16px !important;
+      margin-bottom: 36px !important;
+      padding-bottom: 18px !important;
+      border-bottom: 1px solid var(--border-subtle) !important;
+    }
+
+    .about-hero-header {
+      text-align: center !important;
+      max-width: 860px !important;
+      margin: 0 auto 50px auto !important;
+    }
+
+    .about-hero-title {
+      font-family: var(--font-heading) !important;
+      font-size: 42px !important;
+      font-weight: 800 !important;
+      color: var(--text-primary) !important;
+      line-height: 1.2 !important;
+      margin: 16px 0 !important;
+      letter-spacing: -0.8px !important;
+    }
+
+    .about-hero-subtitle {
+      font-size: 17px !important;
+      line-height: 1.7 !important;
+      color: var(--text-secondary) !important;
+      margin: 0 auto !important;
+      max-width: 780px !important;
+    }
+
+    .about-grid-2col {
+      display: grid !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 24px !important;
+      margin-bottom: 40px !important;
+    }
+
+    .about-card-box {
+      background: var(--bg-surface) !important;
+      border: 1px solid var(--border-subtle) !important;
+      border-radius: 16px !important;
+      padding: 34px 30px !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 14px !important;
+      position: relative !important;
+      transition: var(--transition) !important;
+    }
+
+    .about-card-box:hover {
+      border-color: rgba(6, 182, 212, 0.45) !important;
+      transform: translateY(-3px) !important;
+    }
+
+    .about-card-box.border-cyan {
+      border-left: 4px solid var(--accent-cyan) !important;
+    }
+
+    .about-card-box.border-purple {
+      border-left: 4px solid var(--accent-purple) !important;
+    }
+
+    .about-card-box.border-emerald {
+      border-left: 4px solid var(--accent-emerald) !important;
+    }
+
+    .about-card-box.border-amber {
+      border-left: 4px solid #F59E0B !important;
+    }
+
+    .about-card-badge-row {
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+    }
+
+    .about-icon-cube {
+      width: 44px !important;
+      height: 44px !important;
+      border-radius: 10px !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      font-size: 22px !important;
+      flex-shrink: 0 !important;
+    }
+
+    .cube-cyan {
+      background: rgba(6, 182, 212, 0.12) !important;
+      border: 1px solid rgba(6, 182, 212, 0.25) !important;
+    }
+
+    .cube-purple {
+      background: rgba(139, 92, 246, 0.12) !important;
+      border: 1px solid rgba(139, 92, 246, 0.25) !important;
+    }
+
+    .cube-emerald {
+      background: rgba(16, 185, 129, 0.12) !important;
+      border: 1px solid rgba(16, 185, 129, 0.25) !important;
+    }
+
+    .cube-amber {
+      background: rgba(245, 158, 11, 0.12) !important;
+      border: 1px solid rgba(245, 158, 11, 0.25) !important;
+    }
+
+    .about-card-heading {
+      font-family: var(--font-heading) !important;
+      font-size: 20px !important;
+      font-weight: 700 !important;
+      color: var(--text-primary) !important;
+      margin: 0 !important;
+    }
+
+    .about-card-text {
+      font-size: 14.5px !important;
+      line-height: 1.7 !important;
+      color: var(--text-secondary) !important;
+      margin: 0 !important;
+    }
+
+    .about-arch-grid {
+      display: grid !important;
+      grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+      gap: 20px !important;
+      margin-bottom: 40px !important;
+    }
+
+    .arch-card {
+      background: var(--bg-surface) !important;
+      border: 1px solid var(--border-subtle) !important;
+      border-radius: 14px !important;
+      padding: 24px 20px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+      transition: var(--transition) !important;
+    }
+
+    .arch-card:hover {
+      border-color: var(--accent-cyan) !important;
+      transform: translateY(-3px) !important;
+    }
+
+    .arch-tech-pill {
+      display: inline-block !important;
+      font-size: 10.5px !important;
+      font-weight: 700 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.8px !important;
+      padding: 3px 10px !important;
+      border-radius: 9999px !important;
+      width: fit-content !important;
+    }
+
+    .pill-cyan { background: rgba(6, 182, 212, 0.12) !important; color: var(--accent-cyan) !important; }
+    .pill-purple { background: rgba(139, 92, 246, 0.12) !important; color: var(--accent-purple) !important; }
+    .pill-emerald { background: rgba(16, 185, 129, 0.12) !important; color: var(--accent-emerald) !important; }
+    .pill-amber { background: rgba(245, 158, 11, 0.12) !important; color: #F59E0B !important; }
+
+    .arch-card-title {
+      font-family: var(--font-heading) !important;
+      font-size: 16px !important;
+      font-weight: 700 !important;
+      color: var(--text-primary) !important;
+      margin: 0 !important;
+    }
+
+    .arch-card-desc {
+      font-size: 13px !important;
+      line-height: 1.6 !important;
+      color: var(--text-secondary) !important;
+      margin: 0 !important;
+    }
+
+    .about-feature-list {
+      display: grid !important;
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      gap: 20px !important;
+      margin-bottom: 40px !important;
+    }
+
+    .about-feature-box {
+      background: var(--bg-surface) !important;
+      border: 1px solid var(--border-subtle) !important;
+      border-radius: 14px !important;
+      padding: 24px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+    }
+
+    .about-feature-box h4 {
+      font-family: var(--font-heading) !important;
+      font-size: 16px !important;
+      font-weight: 700 !important;
+      color: var(--text-primary) !important;
+      margin: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+    }
+
+    .about-feature-box p {
+      font-size: 13.5px !important;
+      line-height: 1.6 !important;
+      color: var(--text-secondary) !important;
+      margin: 0 !important;
+    }
+
+    @media (max-width: 900px) {
+      .about-grid-2col, .about-arch-grid, .about-feature-list {
+        grid-template-columns: 1fr !important;
+      }
+      .about-hero-title {
+        font-size: 30px !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================
+       TOP INSTITUTIONAL SYSTEM NOTIFICATION BAR
+  ======================================================== -->
+  <!-- ========================================================
+       PUBLIC NAVBAR (Visible on Landing, Login, Signup)
+  ======================================================== -->
+  <header class="public-navbar" id="publicNavbar">
+    <div class="nav-container">
+      <a href="#" class="brand-logo" data-nav="landing">
+        <div class="brand-sparkle">✦</div>
+        <span class="brand-name">EDU-<span>PREDICT</span></span>
+      </a>
+
+      <nav class="public-nav-links">
+        <button class="nav-btn active" data-nav="landing">Home</button>
+        <button class="nav-btn" data-nav="about">About EDU-PREDICT</button>
+      </nav>
+
+      <div class="public-nav-actions">
+        <!-- Theme Toggle -->
+        <button class="icon-toggle-btn" id="themeToggleBtn" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
+          <span id="themeIcon">🌙</span>
+        </button>
+        
+        <button class="btn btn-nav-login" id="navLoginBtn" data-nav="login">Login</button>
+        <button class="btn btn-nav-signup" id="navSignupBtn" data-nav="signup">Sign Up</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================
+       PUBLIC VIEW CONTAINER: SCREEN 1, SCREEN 2, SCREEN 3
+  ======================================================== -->
+  <div id="publicViewsContainer">
+
+    <!-- ==================== SCREEN 1: LANDING / HOME PAGE ==================== -->
+    <section id="landingScreen" class="view-screen active">
+
+      <!-- SECTION A: HERO -->
+      <div class="landing-hero-container">
+        <div class="hero-text-col">
+          <div class="eyebrow-badge">
+            <span class="badge-icon">🎓</span>
+            <span>ACADEMIC &amp; CAREER READINESS PLATFORM</span>
+          </div>
+
+          <h1 class="hero-headline">
+            Connecting Academic<br>
+            Achievement with<br>
+            <span class="gradient-text">Career Readiness</span>
+          </h1>
+
+          <p class="hero-subtitle">
+            EDU-PREDICT helps educational institutions understand student academic performance, review career readiness indicators, and identify opportunities for professional development. It brings student information into a clear, organized view to support informed placement planning and student guidance.
+          </p>
+
+          <div class="hero-cta-group">
+            <button class="btn btn-primary-gradient" id="heroGetStartedBtn">Get Started</button>
+            <button class="btn btn-outline" id="heroLearnMoreBtn">Learn More</button>
+          </div>
+        </div>
+
+        <div class="hero-visual-col">
+          <div class="isometric-hero-card">
+            <div class="hero-card-glow"></div>
+            <!-- Educational & Career Readiness Visual Composition -->
+            <div class="hero-3d-scene">
+              <div class="central-node">
+                <div class="grad-cap-icon">🎓</div>
+                <div class="data-pulse"></div>
+              </div>
+              <div class="float-widget widget-chart">
+                <span class="widget-label">Academic Achievement</span>
+                <span class="widget-val text-cyan">Continuous Progress</span>
+                <div class="mini-bar"><div class="mini-bar-fill" style="width: 88%;"></div></div>
+              </div>
+              <div class="float-widget widget-hdfs">
+                <span class="widget-label">Career Readiness</span>
+                <span class="widget-val text-purple">Skills &amp; Projects</span>
+                <span class="widget-status">● Verified Evidence</span>
+              </div>
+              <div class="float-widget widget-spark">
+                <span class="widget-label">Placement Guidance</span>
+                <span class="widget-val text-emerald">Structured Development</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION B: ABOUT EDU-PREDICT -->
+      <div class="public-content-section" id="aboutEduPredictSection">
+        <div class="section-container">
+          <div class="section-header-centered">
+            <span class="section-kicker">ABOUT EDU-PREDICT</span>
+            <h2 class="section-title">Turning Academic Records into Career Insight</h2>
+            <div class="section-divider-bar"></div>
+            <p class="section-intro-text">
+              EDU-PREDICT is an institutional big data intelligence system designed for universities and engineering colleges to connect academic achievement with real-world industry employability.
+            </p>
+          </div>
+
+          <div class="about-narrative-card">
+            <p class="narrative-paragraph">
+              Academic records provide valuable insight into a student's learning journey. Grades, attendance, projects, certifications, internships, and demonstrated skills can help institutions understand student progress and career preparation.
+            </p>
+            <p class="narrative-paragraph">
+              EDU-PREDICT organizes these records into meaningful insights, helping placement officers review student profiles, understand employability indicators, and make better-informed decisions about placement preparation.
+            </p>
+            <div style="display: flex; gap: 14px; margin-top: 10px; flex-wrap: wrap;">
+              <button class="btn btn-primary-gradient btn-sm" data-nav="about">
+                Read Full System Overview &amp; Architecture &rarr;
+              </button>
+              <button class="btn btn-outline btn-sm" data-nav="login">
+                Access Placement Portal
+              </button>
+            </div>
+          </div>
+
+          <!-- Section B Stat Highlights -->
+          <div class="landing-stats-grid" style="margin-top: 30px;">
+            <div class="stat-card">
+              <div class="stat-number">1M+</div>
+              <div class="stat-label">Assessed Student Profiles</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">98.4%</div>
+              <div class="stat-label">Predictive Precision Rate</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">&lt; 850ms</div>
+              <div class="stat-label">PySpark Query Latency</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">4-Phase</div>
+              <div class="stat-label">Developmental Roadmap</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION C: WHY EDUCATION AND EMPLOYABILITY MATTER -->
+      <div class="public-content-section" id="whyEmployabilitySection">
+        <div class="section-container">
+          <div class="section-header-centered">
+            <span class="section-kicker">INSTITUTIONAL VALUE</span>
+            <h2 class="section-title">Why Education and Employability Matter</h2>
+            <div class="section-divider-bar"></div>
+          </div>
+
+          <div class="three-cards-grid">
+            <div class="value-card">
+              <div class="value-card-icon icon-cyan">📚</div>
+              <h3 class="value-card-title">Academic Performance</h3>
+              <p class="value-card-desc">
+                Understand student progress through academic achievements, attendance, and other relevant educational indicators.
+              </p>
+            </div>
+
+            <div class="value-card">
+              <div class="value-card-icon icon-purple">🎯</div>
+              <h3 class="value-card-title">Career Readiness</h3>
+              <p class="value-card-desc">
+                Review the academic, practical, and skill-related evidence that may help students prepare for opportunities in their chosen fields.
+              </p>
+            </div>
+
+            <div class="value-card">
+              <div class="value-card-icon icon-emerald">🤝</div>
+              <h3 class="value-card-title">Informed Placement Support</h3>
+              <p class="value-card-desc">
+                Use organized student information to identify development needs, coordinate preparation activities, and support placement-related decisions.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION D: HOW EDU-PREDICT HELPS -->
+      <div class="public-content-section" id="howEduPredictHelpsSection">
+        <div class="section-container">
+          <div class="section-header-centered">
+            <span class="section-kicker">OUR APPROACH</span>
+            <h2 class="section-title">From Student Records to Meaningful Insights</h2>
+            <div class="section-divider-bar"></div>
+            <p class="section-intro-text">
+              EDU-PREDICT helps placement officers review student records, understand individual profiles, examine employability indicators, and identify areas where further preparation may be beneficial. By organizing relevant information in one place, the platform supports a more structured approach to student assessment and placement planning.
+            </p>
+          </div>
+
+          <div class="four-steps-grid">
+            <div class="step-card">
+              <div class="step-number-badge">1</div>
+              <h4 class="step-card-title">Review student records</h4>
+              <p class="step-card-desc">Examine academic foundations, attendance history, coursework progress, and baseline credentials.</p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number-badge">2</div>
+              <h4 class="step-card-title">Examine academic and skill indicators</h4>
+              <p class="step-card-desc">Analyze practical projects, internships, certified technical competencies, and professional proficiencies.</p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number-badge">3</div>
+              <h4 class="step-card-title">Identify development opportunities</h4>
+              <p class="step-card-desc">Highlight specific preparation gaps against industry profiles and prioritize learning intervention areas.</p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-number-badge">4</div>
+              <h4 class="step-card-title">Prepare placement insights and reports</h4>
+              <p class="step-card-desc">Generate official cohort readiness documentation and actionable plans for upcoming campus drives.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION E: CALL TO ACTION -->
+      <div class="public-content-section cta-banner-section" id="ctaSection">
+        <div class="section-container">
+          <div class="cta-banner-box">
+            <div class="cta-glow-effect"></div>
+            <h2 class="cta-title">Help Students Prepare for Their Next Opportunity</h2>
+            <p class="cta-desc">
+              Explore student profiles, understand career readiness indicators, and support more informed placement preparation with EDU-PREDICT.
+            </p>
+            <div class="cta-btn-wrap">
+              <button class="btn btn-primary-gradient btn-lg" id="ctaAccessDashboardBtn">
+                Access Placement Dashboard →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION F: PUBLIC FOOTER -->
+      <footer class="public-site-footer" id="publicFooter">
+        <div class="footer-container">
+          <div class="footer-brand-col">
+            <div class="brand-logo">
+              <div class="brand-sparkle">✦</div>
+              <span class="brand-name">EDU-<span>PREDICT</span></span>
+            </div>
+            <p class="footer-project-tagline">
+              Education Employability Prediction Based on Academic Records
+            </p>
+            <p class="footer-purpose-text">
+              Supporting institutional placement teams in guiding student growth, evaluating career readiness, and planning professional development.
+            </p>
+          </div>
+
+          <div class="footer-privacy-col">
+            <div class="privacy-badge">
+              <span class="privacy-icon">🛡️</span>
+              <span>Data Governance &amp; Privacy Notice</span>
+            </div>
+            <p class="footer-privacy-text">
+              All student academic records and employability indicators are processed responsibly in accordance with institutional data governance and student privacy standards. Student data is safeguarded to support legitimate educational guidance and placement facilitation.
+            </p>
+            <div class="footer-copyright">
+              &copy; 2026 EDU-PREDICT. All rights reserved.
+            </div>
+          </div>
+        </div>
+      </footer>
+
+    </section>
+
+    <!-- ==================== SCREEN: ABOUT EDU-PREDICT ==================== -->
+    <section id="aboutScreen" class="view-screen">
+      <div class="about-screen-container">
+        
+        <!-- Top Navigation / Breadcrumbs -->
+        <div class="about-top-bar">
+          <button class="btn btn-outline btn-sm" data-nav="landing">
+            &larr; Back to Home
+          </button>
+          <div style="display: flex; gap: 12px; align-items: center;">
+            <button class="btn btn-outline btn-sm" data-nav="login">
+              Placement Login
+            </button>
+            <button class="btn btn-primary-gradient btn-sm" data-nav="signup">
+              Sign Up
+            </button>
+          </div>
+        </div>
+
+        <!-- Hero Header -->
+        <div class="about-hero-header">
+          <div class="eyebrow-badge">
+            <span class="badge-icon">✦</span>
+            <span>INSTITUTIONAL PLACEMENT &amp; EMPLOYABILITY INTELLIGENCE</span>
+          </div>
+          <h1 class="about-hero-title">
+            Empowering Higher Education with<br>
+            <span class="gradient-text">Predictive Placement Intelligence</span>
+          </h1>
+          <p class="about-hero-subtitle">
+            EDU-PREDICT is a big data and machine learning analytics platform engineered specifically for university placement officers, academic leaders, and career advisors to connect academic rigor with industry employability.
+          </p>
+        </div>
+
+        <!-- 4 Platform Metric Highlights -->
+        <div class="landing-stats-grid" style="margin-bottom: 45px;">
+          <div class="stat-card">
+            <div class="stat-number">1,000,000+</div>
+            <div class="stat-label">Assessed Student Profiles</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">98.4%</div>
+            <div class="stat-label">Model Predictive Precision</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">&lt; 850ms</div>
+            <div class="stat-label">PySpark Query Processing</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">4-Phase</div>
+            <div class="stat-label">Remediation Framework</div>
+          </div>
+        </div>
+
+        <!-- Section: Strategic Mission & Vision -->
+        <div class="about-grid-2col">
+          <div class="about-card-box border-cyan">
+            <div class="about-card-badge-row">
+              <div class="about-icon-cube cube-cyan">🎯</div>
+              <h3 class="about-card-heading">Our Institutional Mission</h3>
+            </div>
+            <p class="about-card-text">
+              To equip higher education institutions with transparent, evidence-based predictive intelligence. By analyzing multi-dimensional student performance indicators across academic records, practical projects, certifications, and technical skills, EDU-PREDICT enables educators to identify skill gaps early and coordinate timely developmental interventions before campus recruitment begins.
+            </p>
+          </div>
+
+          <div class="about-card-box border-purple">
+            <div class="about-card-badge-row">
+              <div class="about-icon-cube cube-purple">🔭</div>
+              <h3 class="about-card-heading">Our Strategic Vision</h3>
+            </div>
+            <p class="about-card-text">
+              To transform college placement preparation from an end-of-year reactive rush into a continuous, structured, and verifiable student growth journey. We envision an educational ecosystem where every graduate enters the job market equipped with market-aligned competencies and a clear career pathway.
+            </p>
+          </div>
+        </div>
+
+        <!-- Section: The Higher Education-to-Employability Gap -->
+        <div class="about-card-box border-amber" style="margin-bottom: 45px;">
+          <div class="about-card-badge-row">
+            <div class="about-icon-cube cube-amber">⚠️</div>
+            <h3 class="about-card-heading">Addressing the Higher Education-to-Employability Gap</h3>
+          </div>
+          <p class="about-card-text">
+            Across higher education, more than <strong>68% of engineering students</strong> require dedicated placement readiness interventions. While traditional transcripts reflect academic diligence through CGPA and classroom attendance, industry corporate recruiters evaluate applied technical stacks, database architecture, problem-solving, and collaborative professional competencies.
+          </p>
+          <p class="about-card-text">
+            EDU-PREDICT bridges this critical divide by aggregating classroom achievement with practical experience indicators—providing placement officers with real-time insight into each student's career readiness profile.
+          </p>
+        </div>
+
+        <!-- Section: Big Data & Machine Learning Architecture -->
+        <div class="section-header-centered">
+          <span class="section-kicker">TECHNICAL EXCELLENCE</span>
+          <h2 class="section-title">Big Data &amp; Machine Learning Engine</h2>
+          <div class="section-divider-bar"></div>
+          <p class="section-intro-text">
+            Built from the ground up on distributed big data infrastructure to process massive institutional student cohorts with zero performance bottlenecks.
+          </p>
+        </div>
+
+        <div class="about-arch-grid">
+          <div class="arch-card">
+            <span class="arch-tech-pill pill-cyan">Distributed Storage</span>
+            <h4 class="arch-card-title">Apache Hadoop HDFS</h4>
+            <p class="arch-card-desc">
+              Fault-tolerant, multi-node distributed file system storing millions of historical and live student records with block-level replication and zero data loss.
+            </p>
+          </div>
+
+          <div class="arch-card">
+            <span class="arch-tech-pill pill-purple">In-Memory Engine</span>
+            <h4 class="arch-card-title">Apache PySpark ETL</h4>
+            <p class="arch-card-desc">
+              Resilient Distributed Dataset (RDD) pipelines performing sub-second aggregations, multi-factor filtering, and percentile rankings across 1,000,000+ student profiles.
+            </p>
+          </div>
+
+          <div class="arch-card">
+            <span class="arch-tech-pill pill-emerald">Predictive AI</span>
+            <h4 class="arch-card-title">Random Forest Classifier</h4>
+            <p class="arch-card-desc">
+              Dual-engine machine learning ensemble modeling academic scores, attendance, projects, certifications, and technical competencies to classify readiness with 98.4% precision.
+            </p>
+          </div>
+
+          <div class="arch-card">
+            <span class="arch-tech-pill pill-amber">Prescriptive AI</span>
+            <h4 class="arch-card-title">4-Phase Roadmaps</h4>
+            <p class="arch-card-desc">
+              Automated skill gap remediation engine converting missing requirements into structured 4-phase upskilling roadmaps tailored to each target industry role.
+            </p>
+          </div>
+        </div>
+
+        <!-- Section: Placement Officer Capabilities -->
+        <div class="section-header-centered" style="margin-top: 50px;">
+          <span class="section-kicker">COMMAND CENTER CAPABILITIES</span>
+          <h2 class="section-title">Designed for College Placement Teams</h2>
+          <div class="section-divider-bar"></div>
+        </div>
+
+        <div class="about-feature-list">
+          <div class="about-feature-box">
+            <h4><span>📋</span> 360&deg; Student Dossier</h4>
+            <p>
+              Instantly inspect verified CGPA, attendance, project counts, internships, certifications, and recorded technical proficiencies for any student across the institution.
+            </p>
+          </div>
+
+          <div class="about-feature-box">
+            <h4><span>⚡</span> Live Skill Gap Simulator</h4>
+            <p>
+              Test hypothetical skill acquisitions in real-time. See immediate updates across Technical Skills, Soft Skills, and Role Match percentages for target industry profiles.
+            </p>
+          </div>
+
+          <div class="about-feature-box">
+            <h4><span>📊</span> Cohort Trend Forecasting</h4>
+            <p>
+              Analyze college-wide employability distribution, identifying cohort trends and departments requiring targeted placement training sessions.
+            </p>
+          </div>
+
+          <div class="about-feature-box">
+            <h4><span>📑</span> Official Placement Reports</h4>
+            <p>
+              Generate institutional-grade placement reports and executive summaries suitable for academic deans, accreditation boards, and industry recruiters.
+            </p>
+          </div>
+
+          <div class="about-feature-box">
+            <h4><span>🛡️</span> Ethical &amp; Non-Biased AI</h4>
+            <p>
+              Algorithmic scoring grounded exclusively in verified educational milestones and demonstrated technical competencies, free from demographic bias.
+            </p>
+          </div>
+
+          <div class="about-feature-box">
+            <h4><span>🔒</span> Institutional FERPA Privacy</h4>
+            <p>
+              Enterprise-grade authentication, role-based authorization, and encrypted endpoints protecting student confidentiality in full compliance with institutional policies.
+            </p>
+          </div>
+        </div>
+
+        <!-- Bottom CTA Banner -->
+        <div class="cta-banner-box" style="margin-top: 20px;">
+          <div class="cta-glow-effect"></div>
+          <h2 class="cta-title">Ready to Enhance Placement Intelligence?</h2>
+          <p class="cta-desc">
+            Explore 1,000,000+ student records, simulate skill requirements, and guide your students toward high-impact careers with EDU-PREDICT.
+          </p>
+          <div class="cta-btn-wrap" style="gap: 16px; display: flex; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary-gradient btn-lg" data-nav="login">
+              Access Placement Portal &rarr;
+            </button>
+            <button class="btn btn-outline btn-lg" data-nav="landing">
+              Return to Home Page
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Public Site Footer -->
+      <footer class="public-site-footer" style="margin-top: 50px;">
+        <div class="footer-container">
+          <div class="footer-brand-col">
+            <div class="brand-logo">
+              <div class="brand-sparkle">✦</div>
+              <span class="brand-name">EDU-<span>PREDICT</span></span>
+            </div>
+            <p class="footer-project-tagline">College Placement Officer Intelligence System</p>
+            <p class="footer-purpose-text">
+              Empowering institutions to bridge academic records with industry career readiness through Big Data engineering and Machine Learning intelligence.
+            </p>
+          </div>
+
+          <div class="footer-privacy-col">
+            <div class="privacy-badge">
+              <span class="privacy-icon">🛡️</span>
+              <span>Data Governance &amp; Privacy Notice</span>
+            </div>
+            <p class="footer-privacy-text">
+              All student records and career indicators are processed securely in compliance with institutional data governance standards to support legitimate academic guidance and placement preparation.
+            </p>
+            <div class="footer-copyright">
+              &copy; 2026 EDU-PREDICT. All rights reserved.
+            </div>
+          </div>
+        </div>
+      </footer>
+    </section>
+
+    <!-- ==================== SCREEN 2: SIGNUP PAGE ==================== -->
+    <section id="signupScreen" class="view-screen">
+      <div class="auth-split-wrapper">
+        <!-- Left Branding Banner -->
+        <div class="auth-visual-banner">
+          <div class="auth-banner-art">
+            <div class="banner-cap-glow">🎓</div>
+            <div class="banner-brand-slogan">
+              <span class="slogan-better">Better Data</span>
+              <span class="slogan-better">Better Decisions</span>
+              <span class="slogan-brighter">Brighter Careers</span>
+            </div>
+            <p class="banner-foot-note">Empowering Placement Cells with Predictive Big Data</p>
+          </div>
+        </div>
+
+        <!-- Right Signup Form Card -->
+        <div class="auth-form-card">
+          <div class="form-card-inner">
+            <div class="form-brand-header">
+              <div class="brand-sparkle">✦</div>
+              <span class="brand-name">EDU-<span>PREDICT</span></span>
+            </div>
+
+            <h2 class="auth-title">Create Your Account</h2>
+            <p class="auth-desc">Join EDU-PREDICT to analyze student employability and gain valuable insights.</p>
+
+            <form id="signupForm" class="auth-form" autocomplete="off">
+              <div class="form-group">
+                <label for="signupFullName"><span class="input-icon">👤</span> Full Name</label>
+                <input type="text" id="signupFullName" placeholder="e.g. Dr. Rajesh Kumar" required>
+              </div>
+
+              <div class="form-group">
+                <label for="signupEmail"><span class="input-icon">✉️</span> College Email</label>
+                <input type="email" id="signupEmail" placeholder="placement@college.edu" required>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="signupEmployeeId"><span class="input-icon">🆔</span> Staff / Employee ID</label>
+                  <input type="text" id="signupEmployeeId" placeholder="TPO-2026-08" required>
+                </div>
+                <div class="form-group">
+                  <label for="signupDepartment"><span class="input-icon">🏛️</span> Placement Cell / Dept</label>
+                  <input type="text" id="signupDepartment" placeholder="Training &amp; Placement Cell" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="signupPassword"><span class="input-icon">🔒</span> Password</label>
+                <div class="password-input-wrap">
+                  <input type="password" id="signupPassword" placeholder="Create secure password" required minlength="6">
+                  <button type="button" class="eye-toggle" data-target="signupPassword" aria-label="Toggle password visibility">👁️</button>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="signupConfirmPassword"><span class="input-icon">🔒</span> Confirm Password</label>
+                <div class="password-input-wrap">
+                  <input type="password" id="signupConfirmPassword" placeholder="Confirm password" required minlength="6">
+                  <button type="button" class="eye-toggle" data-target="signupConfirmPassword" aria-label="Toggle password visibility">👁️</button>
+                </div>
+              </div>
+
+              <div class="terms-row">
+                <input type="checkbox" id="termsCheck" required checked>
+                <label for="termsCheck">I agree to college placement privacy policy &amp; data governance.</label>
+              </div>
+
+              <div id="signupMsg" class="auth-alert hidden"></div>
+
+              <button type="submit" class="btn btn-primary-gradient btn-block" id="signupSubmitBtn">Sign Up</button>
+
+              <div class="auth-switch-footer">
+                <span>Already have an account?</span>
+                <a href="#" class="auth-link" data-nav="login">Login</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SCREEN 3: LOGIN PAGE ==================== -->
+    <section id="loginScreen" class="view-screen">
+      <div class="auth-split-wrapper">
+        <!-- Left Branding Banner -->
+        <div class="auth-visual-banner">
+          <div class="auth-banner-art">
+            <div class="banner-cap-glow">🎓</div>
+            <div class="banner-brand-slogan">
+              <span class="slogan-better">Better Data</span>
+              <span class="slogan-better">Better Decisions</span>
+              <span class="slogan-brighter">Brighter Careers</span>
+            </div>
+            <p class="banner-foot-note">Empowering Placement Cells with Predictive Career Analytics</p>
+          </div>
+        </div>
+
+        <!-- Right Login Form Card -->
+        <div class="auth-form-card">
+          <div class="form-card-inner">
+            <div class="form-brand-header">
+              <div class="brand-sparkle">✦</div>
+              <span class="brand-name">EDU-<span>PREDICT</span></span>
+            </div>
+
+            <h2 class="auth-title">Welcome Back</h2>
+            <p class="auth-desc">Sign in to your account to continue.</p>
+
+            <form id="loginForm" class="auth-form" autocomplete="off">
+              <div class="form-group">
+                <label for="loginEmail"><span class="input-icon">✉️</span> Email / Username</label>
+                <input type="text" id="loginEmail" placeholder="placement@college.edu" value="placement@college.edu" required>
+              </div>
+
+              <div class="form-group">
+                <label for="loginPassword"><span class="input-icon">🔒</span> Password</label>
+                <div class="password-input-wrap">
+                  <input type="password" id="loginPassword" placeholder="Enter your password" value="password123" required>
+                  <button type="button" class="eye-toggle" data-target="loginPassword" aria-label="Toggle password visibility">👁️</button>
+                </div>
+              </div>
+
+              <div class="remember-forgot-row">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="rememberMeCheck" checked>
+                  <span>Remember Me</span>
+                </label>
+                <a href="#" class="auth-link" id="forgotPasswordLink">Forgot Password?</a>
+              </div>
+
+              <div id="loginMsg" class="auth-alert hidden"></div>
+
+              <button type="submit" class="btn btn-primary-gradient btn-block" id="loginSubmitBtn">Login</button>
+
+              <!-- Quick Demo Accounts Trigger -->
+              <div class="demo-accounts-pill" id="demoAccountsTrigger">
+                <span>Demo Creds: <code>placement@college.edu</code> / <code>password123</code></span>
+              </div>
+
+              <div class="auth-switch-footer">
+                <span>Don't have an account?</span>
+                <a href="#" class="auth-link" data-nav="signup">Sign Up</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div> <!-- End #publicViewsContainer -->
+
+
+  <!-- ========================================================
+       AUTHENTICATED PLACEMENT OFFICER PORTAL (SCREENS 4 - 8)
+  ======================================================== -->
+  <div id="portalContainer" class="portal-layout hidden">
+
+    <!-- PERSISTENT SIDEBAR NAVIGATION -->
+    <aside class="portal-sidebar" id="portalSidebar">
+      <!-- Top Brand -->
+      <div class="sidebar-brand">
+        <div class="brand-sparkle">✦</div>
+        <span class="brand-name">EDU-<span>PREDICT</span></span>
+      </div>
+
+      <!-- Placement Officer Profile Block -->
+      <div class="sidebar-user-card" id="sidebarUserCard">
+        <div class="user-avatar-circle" id="sidebarAvatar">PO</div>
+        <div class="user-meta">
+          <strong class="user-name" id="sidebarUserName">Placement Officer</strong>
+          <small class="user-email" id="sidebarUserEmail">placement@college.edu</small>
+        </div>
+      </div>
+
+      <!-- Navigation Menu -->
+      <nav class="sidebar-menu">
+        <button class="menu-item active" data-portal-tab="dashboard">
+          <span class="menu-icon">📊</span>
+          <span class="menu-text">Dashboard</span>
+        </button>
+
+        <button class="menu-item" data-portal-tab="records">
+          <span class="menu-icon">📁</span>
+          <span class="menu-text">Academic Records</span>
+        </button>
+
+        <button class="menu-item" data-portal-tab="prediction">
+          <span class="menu-icon">🎯</span>
+          <span class="menu-text">Employability Prediction</span>
+        </button>
+
+        <button class="menu-item" data-portal-tab="skillgap">
+          <span class="menu-icon">🧩</span>
+          <span class="menu-text">Skill Gap Analysis</span>
+        </button>
+
+        <button class="menu-item" data-portal-tab="results">
+          <span class="menu-icon">📈</span>
+          <span class="menu-text">Results &amp; Analysis</span>
+        </button>
+
+        <button class="menu-item" data-portal-tab="reports">
+          <span class="menu-icon">📑</span>
+          <span class="menu-text">Reports</span>
+        </button>
+
+        <button class="menu-item" data-portal-tab="settings">
+          <span class="menu-icon">⚙️</span>
+          <span class="menu-text">Settings</span>
+        </button>
+      </nav>
+
+      <!-- Bottom Logout Button -->
+      <div class="sidebar-bottom">
+        <button class="menu-item logout-btn" id="portalLogoutBtn">
+          <span class="menu-icon">⭕</span>
+          <span class="menu-text">Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN PORTAL CONTENT AREA -->
+    <main class="portal-main-content">
+
+      <!-- TOP INSTITUTIONAL SYSTEM NOTIFICATION BAR (Placement Portal) -->
+      <div class="system-top-banner">
+        <div class="banner-content">
+          <div class="banner-left">
+            <span class="live-pulse"></span>
+            <span class="banner-tag">EDUCATION INTELLIGENCE SYSTEM</span>
+            <span class="banner-sep">·</span>
+            <span class="banner-title">College Placement Officer Dashboard</span>
+          </div>
+          <div class="banner-right">
+            <span class="hdfs-badge" id="bannerHdfsStatus">
+              <span class="status-dot online"></span>
+              <span>HDFS: /education_employability/raw</span>
+            </span>
+            <span class="banner-sep">·</span>
+            <span>Apache Spark 3.5 &amp; MLlib</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================== SCREEN 4: DASHBOARD ==================== -->
+      <section id="portalTab-dashboard" class="portal-tab-view active">
+        <!-- Top Title Bar -->
+        <div class="portal-header-bar">
+          <div>
+            <h1 class="portal-view-title">Dashboard</h1>
+            <p class="portal-view-sub">Welcome back! Here's an overview of your student data and insights.</p>
+          </div>
+          <div class="header-right-badges">
+            <span class="date-badge" id="currentDateBadge">Apr 28, 2025</span>
+          </div>
+        </div>
+
+        <!-- 4 KPI Cards -->
+        <div class="kpi-cards-grid">
+          <div class="kpi-card">
+            <div class="kpi-icon-wrap icon-cyan">👥</div>
+            <div class="kpi-info">
+              <span class="kpi-label">Total Students (Processed: 1M · Pending: 0)</span>
+              <h2 class="kpi-value" id="kpiTotalStudents">1,000,000</h2>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon-wrap icon-emerald">🎓</div>
+            <div class="kpi-info">
+              <span class="kpi-label">High Employability (319,161)</span>
+              <h2 class="kpi-value text-cyan" id="kpiHighPct">31.9%</h2>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon-wrap icon-purple">📊</div>
+            <div class="kpi-info">
+              <span class="kpi-label">Medium Employability (630,906)</span>
+              <h2 class="kpi-value text-purple" id="kpiMediumPct">63.1%</h2>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-icon-wrap icon-rose">⚠️</div>
+            <div class="kpi-info">
+              <span class="kpi-label">Low Employability (Priority Review)</span>
+              <h2 class="kpi-value text-rose" id="kpiLowPct">5.0%</h2>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 Main Dashboard Cards: Donut & Quick Actions -->
+        <div class="dashboard-duo-grid">
+          <!-- Employability Distribution Donut Card -->
+          <div class="panel-card">
+            <div class="panel-header">
+              <h3 class="panel-title">Employability Distribution</h3>
+            </div>
+            <div class="donut-display-wrapper">
+              <div class="donut-canvas-container">
+                <canvas id="donutChartCanvas" width="220" height="220"></canvas>
+                <div class="donut-center-label">
+                  <strong class="center-val">1M</strong>
+                  <span class="center-sub">Records</span>
+                </div>
+              </div>
+              <div class="donut-legend-list">
+                <div class="legend-item">
+                  <span class="legend-dot dot-high"></span>
+                  <span class="legend-text">High Potential</span>
+                  <span class="legend-pct text-cyan" id="legendHigh">31.9%</span>
+                </div>
+                <div class="legend-item">
+                  <span class="legend-dot dot-medium"></span>
+                  <span class="legend-text">Medium Developing</span>
+                  <span class="legend-pct text-purple" id="legendMedium">63.1%</span>
+                </div>
+                <div class="legend-item">
+                  <span class="legend-dot dot-low"></span>
+                  <span class="legend-text">Low Growth Req.</span>
+                  <span class="legend-pct text-rose" id="legendLow">5.0%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Actions Card -->
+          <div class="panel-card">
+            <div class="panel-header">
+              <h3 class="panel-title">Quick Actions</h3>
+            </div>
+            <div class="quick-actions-list">
+              <button class="quick-action-item" data-goto-tab="records">
+                <div class="qa-icon icon-cyan">📤</div>
+                <div class="qa-text">
+                  <strong>Upload Academic Records</strong>
+                  <span>Send files to HDFS via FastAPI</span>
+                </div>
+                <span class="qa-arrow">→</span>
+              </button>
+
+              <button class="quick-action-item" data-goto-tab="prediction">
+                <div class="qa-icon icon-purple">🎯</div>
+                <div class="qa-text">
+                  <strong>Try Prediction</strong>
+                  <span>Get employability score for a student</span>
+                </div>
+                <span class="qa-arrow">→</span>
+              </button>
+
+              <button class="quick-action-item" data-goto-tab="skillgap">
+                <div class="qa-icon icon-amber">🧩</div>
+                <div class="qa-text">
+                  <strong>View Skill Gap Analysis</strong>
+                  <span>Identify student learning needs</span>
+                </div>
+                <span class="qa-arrow">→</span>
+              </button>
+
+              <button class="quick-action-item" data-goto-tab="results">
+                <div class="qa-icon icon-emerald">📈</div>
+                <div class="qa-text">
+                  <strong>See Results &amp; Analysis</strong>
+                  <span>Model performance and insights</span>
+                </div>
+                <span class="qa-arrow">→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dashboard Secondary Grid: Missing Skills & Department Stats & Activity -->
+        <div class="dashboard-duo-grid" style="margin-top: 24px;">
+          <!-- Most Frequently Missing Skills Card -->
+          <div class="panel-card">
+            <div class="panel-header">
+              <h3 class="panel-title">Most Frequently Missing Skills</h3>
+              <span class="status-pill" style="background: rgba(139,92,246,0.15); color: var(--accent-purple);">1M Records Cohort</span>
+            </div>
+            <div class="missing-skills-list" id="dashboardMissingSkillsList" style="display: flex; flex-direction: column; gap: 12px; margin-top: 14px;">
+              <div class="skill-gap-bar-item">
+                <div style="display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 4px;">
+                  <span>Web Development</span><strong class="text-rose">48.0% (480,112 students)</strong>
+                </div>
+                <div style="height: 6px; background: var(--bg-secondary); border-radius: 4px; overflow: hidden;">
+                  <div style="width: 48%; height: 100%; background: var(--accent-rose);"></div>
+                </div>
+              </div>
+              <div class="skill-gap-bar-item">
+                <div style="display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 4px;">
+                  <span>Python Programming</span><strong class="text-rose">48.0% (480,049 students)</strong>
+                </div>
+                <div style="height: 6px; background: var(--bg-secondary); border-radius: 4px; overflow: hidden;">
+                  <div style="width: 48%; height: 100%; background: var(--accent-rose);"></div>
+                </div>
+              </div>
+              <div class="skill-gap-bar-item">
+                <div style="display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 4px;">
+                  <span>Machine Learning</span><strong class="text-amber">48.0% (479,866 students)</strong>
+                </div>
+                <div style="height: 6px; background: var(--bg-secondary); border-radius: 4px; overflow: hidden;">
+                  <div style="width: 48%; height: 100%; background: var(--accent-amber);"></div>
+                </div>
+              </div>
+              <div class="skill-gap-bar-item">
+                <div style="display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 4px;">
+                  <span>Cloud Architecture</span><strong class="text-amber">48.0% (479,745 students)</strong>
+                </div>
+                <div style="height: 6px; background: var(--bg-secondary); border-radius: 4px; overflow: hidden;">
+                  <div style="width: 48%; height: 100%; background: var(--accent-amber);"></div>
+                </div>
+              </div>
+              <div class="skill-gap-bar-item">
+                <div style="display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 4px;">
+                  <span>SQL Databases</span><strong class="text-cyan">48.0% (479,694 students)</strong>
+                </div>
+                <div style="height: 6px; background: var(--bg-secondary); border-radius: 4px; overflow: hidden;">
+                  <div style="width: 48%; height: 100%; background: var(--accent-cyan);"></div>
+                </div>
+              </div>
+              <div class="skill-gap-bar-item">
+                <div style="display: flex; justify-content: space-between; font-size: 12.5px; margin-bottom: 4px;">
+                  <span>Java Systems</span><strong class="text-cyan">47.9% (479,542 students)</strong>
+                </div>
+                <div style="height: 6px; background: var(--bg-secondary); border-radius: 4px; overflow: hidden;">
+                  <div style="width: 48%; height: 100%; background: var(--accent-cyan);"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Department-Wise Statistics & Recent Activity Card -->
+          <div class="panel-card">
+            <div class="panel-header">
+              <h3 class="panel-title">Department-Wise Statistics</h3>
+              <span class="status-pill" style="background: rgba(244,63,94,0.15); color: var(--accent-rose);">Dataset Notice</span>
+            </div>
+            <div class="empty-state-notice">
+              <span class="empty-icon">🏛️</span>
+              <p><strong>Department Statistics Not Recorded</strong></p>
+              <span>Department and graduation year fields are not present in the current synthetic CSV dataset schema (Available fields: CGPA, Attendance, Projects, Internships, Certifications, and 6 Technical Skills).</span>
+            </div>
+
+            <div style="margin-top: 20px;">
+              <h4 style="font-size: 12.5px; color: var(--text-secondary); margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px;">Recent Ingestion &amp; Spark Processing Activity</h4>
+              <div class="recent-activity-list" id="dashboardRecentActivity">
+                <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border-subtle); font-size: 12px;">
+                  <div><strong class="text-cyan">HDFS Batch Ingestion:</strong> 1,000,000 Records (/education_employability/raw)</div>
+                  <span class="text-muted">128 MB Block</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border-subtle); font-size: 12px;">
+                  <div><strong class="text-purple">Spark ML Vectorization:</strong> 8 Distributed Worker Partitions</div>
+                  <span class="text-muted">4.82s execution</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 8px 0; font-size: 12px;">
+                  <div><strong class="text-emerald">GBT Model Evaluation:</strong> 92.4% Accuracy (Test Split)</div>
+                  <span class="text-muted">Spark MLlib</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="portal-footer">
+          <span>EDU-PREDICT · Education Intelligence System · Leveraging Big Data &amp; Machine Learning for a Brighter Future</span>
+        </footer>
+      </section>
+
+      <!-- ==================== SCREEN 5: ACADEMIC RECORDS ==================== -->
+      <section id="portalTab-records" class="portal-tab-view">
+        <div class="portal-header-bar">
+          <div>
+            <h1 class="portal-view-title">Academic Records</h1>
+            <p class="portal-view-sub">Upload and manage student academic data. Files will be stored in HDFS.</p>
+          </div>
+        </div>
+
+        <!-- Top Upload & HDFS Status Block -->
+        <div class="records-top-grid">
+          <!-- Drag & Drop Upload Zone -->
+          <div class="upload-drop-zone" id="dropZone">
+            <div class="upload-icon-cloud">☁️</div>
+            <h3>Drag &amp; drop files here</h3>
+            <p class="upload-sub">or click to browse</p>
+            <span class="upload-formats">Supported formats: CSV, XLSX, PDF, DOC, DOCX</span>
+            <input type="file" id="fileInput" class="hidden" accept=".csv,.xlsx,.pdf,.doc,.docx">
+            <button class="btn btn-primary-gradient" id="selectFilesBtn">Select Files</button>
+            <div id="uploadStatusMsg" class="upload-feedback hidden"></div>
+          </div>
+
+          <!-- HDFS Connection Status Card -->
+          <div class="panel-card hdfs-status-card">
+            <div class="panel-header">
+              <h3 class="panel-title">HDFS Connection Status</h3>
+              <span class="status-pill connected" id="hdfsStatusPill">Connected</span>
+            </div>
+            <div class="hdfs-card-body">
+              <div class="hdfs-meta-row">
+                <span class="meta-label">HDFS Path</span>
+                <code class="meta-code" id="hdfsActivePath">/education_employability/raw</code>
+              </div>
+              <div class="hdfs-meta-row">
+                <span class="meta-label">Distributed Block Size</span>
+                <span class="meta-val">128 MB</span>
+              </div>
+              <div class="hdfs-meta-row">
+                <span class="meta-label">Replication Factor</span>
+                <span class="meta-val">1 (Single Node)</span>
+              </div>
+              <div class="hdfs-meta-row">
+                <span class="meta-label">NameNode Web UI</span>
+                <a href="http://localhost:9870" target="_blank" class="hdfs-link">http://localhost:9870 ↗</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Selected Files Table (Reference Screen 5) -->
+        <div class="panel-card" style="margin-top: 24px;">
+          <div class="panel-header">
+            <h3 class="panel-title">Selected Files</h3>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>File Name</th>
+                  <th>Type</th>
+                  <th>Size</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="selectedFilesTableBody">
+                <tr>
+                  <td><strong>students_data.csv</strong></td>
+                  <td><span class="type-pill">CSV</span></td>
+                  <td>68.2 MB</td>
+                  <td><span class="status-pill connected">Uploaded</span></td>
+                </tr>
+                <tr>
+                  <td><strong>academic_records.xlsx</strong></td>
+                  <td><span class="type-pill">XLSX</span></td>
+                  <td>12.4 MB</td>
+                  <td><span class="status-pill connected">Uploaded</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- 1,000,000 Student Records Table with Paginated Search -->
+        <div class="panel-card" style="margin-top: 24px;">
+          <div class="panel-header-flex">
+            <div>
+              <h3 class="panel-title">Processed Student Records (1,000,000 Dataset)</h3>
+              <p class="panel-subtitle">Streamed and paginated directly from Hadoop HDFS raw storage</p>
+            </div>
+            <!-- Search & Filters -->
+            <div class="table-controls-bar">
+              <div class="search-input-wrap">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="studentSearchInput" placeholder="Search by ID or Name...">
+              </div>
+              <select id="levelFilterSelect" class="form-select">
+                <option value="All">All Employability Levels</option>
+                <option value="High">High Employability</option>
+                <option value="Medium">Medium Employability</option>
+                <option value="Low">Low Employability</option>
+              </select>
+              <select id="skillFilterSelect" class="form-select">
+                <option value="All">All Skills</option>
+                <option value="Python">Python</option>
+                <option value="Java">Java</option>
+                <option value="SQL">SQL</option>
+                <option value="Machine Learning">Machine Learning</option>
+                <option value="Cloud">Cloud</option>
+                <option value="Web Development">Web Development</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table" id="studentsTable">
+              <thead>
+                <tr>
+                  <th>Student ID</th>
+                  <th>Student Name</th>
+                  <th>CGPA</th>
+                  <th>Attendance</th>
+                  <th>Projects</th>
+                  <th>Internships</th>
+                  <th>Technical Skills</th>
+                  <th>Employability Level</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="studentsTableBody">
+                <tr>
+                  <td colspan="9" class="loading-td">Loading records from dataset...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination controls -->
+          <div class="pagination-footer">
+            <span class="pagination-info" id="paginationInfo">Showing 1 to 15 of 1,000,000 records</span>
+            <div class="pagination-buttons">
+              <button class="btn btn-sm btn-outline" id="prevPageBtn" disabled>Previous</button>
+              <span class="page-indicator" id="pageIndicator">Page 1</span>
+              <button class="btn btn-sm btn-outline" id="nextPageBtn">Next</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SCREEN 6: EMPLOYABILITY PREDICTION ==================== -->
+      <section id="portalTab-prediction" class="portal-tab-view">
+        <div class="portal-header-bar">
+          <div>
+            <h1 class="portal-view-title">Employability Prediction</h1>
+            <p class="portal-view-sub">Enter a student's academic details to predict their employability score.</p>
+          </div>
+        </div>
+
+        <div class="prediction-grid-layout">
+          <!-- Prediction Form Card -->
+          <div class="panel-card">
+            <!-- Quick Load Student Selector -->
+            <div class="student-quick-search-bar">
+              <span class="sq-label">Quick Load Student:</span>
+              <input type="text" id="quickStudentIdInput" placeholder="Enter Student ID (e.g. STU0000004)...">
+              <button type="button" class="btn btn-sm btn-outline" id="loadStudentByIdBtn">Load Profile</button>
+              <span class="sq-sep">or sample:</span>
+              <button type="button" class="btn btn-xs btn-outline" id="sampleHighBtn">High</button>
+              <button type="button" class="btn btn-xs btn-outline" id="sampleMedBtn">Medium</button>
+              <button type="button" class="btn btn-xs btn-outline" id="sampleLowBtn">Growth</button>
+            </div>
+
+            <form id="predictionForm" class="prediction-form-body">
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="predStudentName">Student Name</label>
+                  <input type="text" id="predStudentName" placeholder="Enter student name" value="Rahul Verma" required>
+                </div>
+                <div class="form-group">
+                  <label for="predCgpa">CGPA (0 - 10)</label>
+                  <input type="number" id="predCgpa" min="0" max="10" step="0.01" placeholder="0 - 10" value="8.45" required>
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="predAttendance">Attendance %</label>
+                  <input type="number" id="predAttendance" min="0" max="100" step="0.1" placeholder="0 - 100" value="88.0" required>
+                </div>
+                <div class="form-group">
+                  <label for="predProjects">Number of Projects</label>
+                  <input type="number" id="predProjects" min="0" max="20" placeholder="Projects" value="3" required>
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="predInternships">Internships</label>
+                  <input type="number" id="predInternships" min="0" max="10" placeholder="Internships" value="1" required>
+                </div>
+                <div class="form-group">
+                  <label for="predCertifications">Certifications</label>
+                  <input type="number" id="predCertifications" min="0" max="15" placeholder="Certifications" value="2" required>
+                </div>
+              </div>
+
+              <!-- Technical Skills Checkbox Grid -->
+              <div class="form-group">
+                <label>Technical Skills</label>
+                <div class="skills-checkbox-grid">
+                  <label class="skill-check-item">
+                    <input type="checkbox" name="predSkills" value="Python" checked>
+                    <span>Python</span>
+                  </label>
+                  <label class="skill-check-item">
+                    <input type="checkbox" name="predSkills" value="Java">
+                    <span>Java</span>
+                  </label>
+                  <label class="skill-check-item">
+                    <input type="checkbox" name="predSkills" value="SQL" checked>
+                    <span>SQL</span>
+                  </label>
+                  <label class="skill-check-item">
+                    <input type="checkbox" name="predSkills" value="Machine Learning" checked>
+                    <span>Machine Learning</span>
+                  </label>
+                  <label class="skill-check-item">
+                    <input type="checkbox" name="predSkills" value="Cloud">
+                    <span>Cloud</span>
+                  </label>
+                  <label class="skill-check-item">
+                    <input type="checkbox" name="predSkills" value="Web Development" checked>
+                    <span>Web Development</span>
+                  </label>
+                  <label class="skill-check-item">
+                    <input type="checkbox" name="predSkills" value="GenAI" checked>
+                    <span>✨ GenAI</span>
+                  </label>
+                  <label class="skill-check-item">
+                    <input type="checkbox" name="predSkills" value="Full Stack" checked>
+                    <span>⚡ Full Stack</span>
+                  </label>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary-gradient btn-analyze" id="predictSubmitBtn">
+                Analyze Employability →
+              </button>
+            </form>
+          </div>
+
+          <!-- Prediction Result Card -->
+          <div class="panel-card prediction-result-card" id="predResultCard">
+            <div class="panel-header">
+              <h3 class="panel-title">Employability Assessment Result</h3>
+              <span class="level-pill high" id="resLevelBadge">High Employability</span>
+            </div>
+
+            <div class="result-score-block">
+              <div class="score-circle-outer">
+                <span class="score-value" id="resScoreVal">82</span>
+                <span class="score-max">/ 100</span>
+              </div>
+              <div class="score-details">
+                <h4 id="resCategoryTitle">High Employability Potential</h4>
+                <p id="resSummary">Exceptional academic credentials and practical experience profile. Strong candidate for top-tier roles.</p>
+              </div>
+            </div>
+
+            <div class="features-breakdown-section">
+              <h5>Model Feature Contributions</h5>
+              <div class="feature-bar-item">
+                <div class="f-label"><span>CGPA (35% Weight)</span><strong id="cgpaContrib">29.6 pts</strong></div>
+                <div class="f-bar"><div class="f-fill bg-cyan" id="cgpaBar" style="width: 85%;"></div></div>
+              </div>
+              <div class="feature-bar-item">
+                <div class="f-label"><span>Internships (18% Weight)</span><strong id="internContrib">9.0 pts</strong></div>
+                <div class="f-bar"><div class="f-fill bg-purple" id="internBar" style="width: 50%;"></div></div>
+              </div>
+              <div class="feature-bar-item">
+                <div class="f-label"><span>Projects (15% Weight)</span><strong id="projContrib">9.0 pts</strong></div>
+                <div class="f-bar"><div class="f-fill bg-emerald" id="projBar" style="width: 60%;"></div></div>
+              </div>
+              <div class="feature-bar-item">
+                <div class="f-label"><span>Technical Skills (14% Weight)</span><strong id="skillContrib">9.3 pts</strong></div>
+                <div class="f-bar"><div class="f-fill bg-amber" id="skillBar" style="width: 67%;"></div></div>
+              </div>
+            </div>
+
+            <div class="strengths-weaknesses-grid">
+              <div class="feedback-col">
+                <h6>Verified Strengths</h6>
+                <ul id="resStrengthsList" class="feedback-list strengths">
+                  <li>Strong academic consistency with 8.45 CGPA.</li>
+                  <li>Good portfolio of 3 technical projects.</li>
+                  <li>Multiple core skills verified (Python, SQL, ML, Web).</li>
+                </ul>
+              </div>
+              <div class="feedback-col">
+                <h6>Development Opportunities</h6>
+                <ul id="resWeaknessesList" class="feedback-list weaknesses">
+                  <li>Consider completing a cloud deployment certification.</li>
+                  <li>Pursue an additional summer industrial internship.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SCREEN 7: SKILL GAP ANALYSIS ==================== -->
+      <section id="portalTab-skillgap" class="portal-tab-view">
+        <div class="portal-header-bar">
+          <div>
+            <h1 class="portal-view-title">Skill Gap Analysis</h1>
+            <p class="portal-view-sub">Compare student skills against industry requirements, evaluate readiness gaps, and guide professional development.</p>
+          </div>
+        </div>
+
+        <!-- 1. PROMINENT STUDENT SEARCH & FILTER PANEL (TOP OF SKILL GAP ANALYSIS) -->
+        <div class="panel-card gap-search-control-panel" id="gapSearchFilterPanel">
+          <div class="gap-panel-top-row">
+            <div class="gap-panel-title-wrap">
+              <span class="panel-badge-icon">🔍</span>
+              <div>
+                <h3 class="panel-title-compact">Student Skill Gap Search &amp; Role Filters</h3>
+                <p class="panel-sub-compact">Search by Student ID or Name, choose a target job profile, and filter by recorded skills, missing gaps, and employability categories.</p>
+              </div>
+            </div>
+            <div class="gap-action-buttons">
+              <button type="button" class="btn btn-outline btn-sm" id="gapResetFiltersBtn">
+                ↺ Reset All Filters
+              </button>
+            </div>
+          </div>
+
+          <!-- Prominent Search Bar -->
+          <div class="gap-primary-search-box">
+            <div class="search-input-wrapper prominent-search-wrapper">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="gapSearchInput" class="prominent-search-input" placeholder="Search by Student ID (e.g. STU0000001) or Student Name..." aria-label="Search Student Records">
+              <button type="button" class="btn-clear-input hidden" id="gapClearSearchBtn" title="Clear Search">✕</button>
+            </div>
+            <button type="button" class="btn btn-primary-gradient btn-search-action" id="gapSearchBtn">
+              Search Student
+            </button>
+          </div>
+
+          <!-- Logical Horizontal Filter Controls (Stacked on Mobile) -->
+          <div class="gap-filters-horizontal-grid">
+            <div class="gap-filter-field">
+              <label for="targetRoleSelect"><span class="filter-icon">🎯</span> Target Job Role</label>
+              <select id="targetRoleSelect" class="form-select-sm">
+                <option value="Data Analyst">Data Analyst</option>
+                <option value="AI/ML Engineer">AI/ML Engineer</option>
+                <option value="Software Developer">Software Developer</option>
+                <option value="Cloud/Data Engineer">Cloud/Data Engineer</option>
+                <option value="Full Stack Developer">Full Stack Developer</option>
+                <option value="GenAI / LLM Engineer">GenAI / LLM Engineer</option>
+              </select>
+            </div>
+
+            <div class="gap-filter-field">
+              <label for="gapRecordedSkillFilter"><span class="filter-icon">✓</span> Recorded Skill</label>
+              <select id="gapRecordedSkillFilter" class="form-select-sm">
+                <option value="All">All Recorded Skills</option>
+                <optgroup label="Technical Skills">
+                  <option value="Python">Python</option>
+                  <option value="SQL">SQL</option>
+                  <option value="Java">Java</option>
+                  <option value="Machine Learning">Machine Learning</option>
+                  <option value="Deep Learning">Deep Learning</option>
+                  <option value="Data Visualization">Data Visualization</option>
+                  <option value="Excel">Excel</option>
+                  <option value="Database Management">Database Management</option>
+                </optgroup>
+                <optgroup label="Domain Knowledge">
+                  <option value="GenAI">✨ GenAI</option>
+                  <option value="Full Stack">⚡ Full Stack</option>
+                  <option value="Cloud Computing">Cloud Computing</option>
+                  <option value="Big Data / Spark">Big Data / Spark</option>
+                  <option value="DevOps / CI-CD">DevOps / CI-CD</option>
+                  <option value="System Design">System Design</option>
+                  <option value="Web Development">Web Development</option>
+                </optgroup>
+                <optgroup label="Soft Skills">
+                  <option value="Communication">Communication</option>
+                  <option value="Teamwork">Teamwork</option>
+                  <option value="Problem Solving">Problem Solving</option>
+                  <option value="Leadership">Leadership</option>
+                  <option value="Critical Thinking">Critical Thinking</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <div class="gap-filter-field">
+              <label for="gapMissingSkillFilter"><span class="filter-icon">⚠️</span> Missing Skill Gap</label>
+              <select id="gapMissingSkillFilter" class="form-select-sm">
+                <option value="All">All Missing Skills</option>
+                <optgroup label="Technical Skills">
+                  <option value="Python">Missing Python</option>
+                  <option value="SQL">Missing SQL</option>
+                  <option value="Java">Missing Java</option>
+                  <option value="Machine Learning">Missing Machine Learning</option>
+                  <option value="Deep Learning">Missing Deep Learning</option>
+                  <option value="Data Visualization">Missing Data Visualization</option>
+                </optgroup>
+                <optgroup label="Domain Knowledge">
+                  <option value="GenAI">Missing GenAI</option>
+                  <option value="Full Stack">Missing Full Stack</option>
+                  <option value="Cloud Computing">Missing Cloud Computing</option>
+                  <option value="Big Data / Spark">Missing Big Data / Spark</option>
+                  <option value="DevOps / CI-CD">Missing DevOps / CI-CD</option>
+                  <option value="Web Development">Missing Web Development</option>
+                </optgroup>
+                <optgroup label="Soft Skills">
+                  <option value="Communication">Missing Communication</option>
+                  <option value="Problem Solving">Missing Problem Solving</option>
+                  <option value="Teamwork">Missing Teamwork</option>
+                  <option value="Leadership">Missing Leadership</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <div class="gap-filter-field">
+              <label for="gapEmployabilityFilter"><span class="filter-icon">📊</span> Employability Category</label>
+              <select id="gapEmployabilityFilter" class="form-select-sm">
+                <option value="All">All Levels</option>
+                <option value="High">High Employability</option>
+                <option value="Medium">Medium Employability</option>
+                <option value="Low">Low Employability</option>
+              </select>
+            </div>
+
+            <div class="gap-filter-field">
+              <label for="gapPhaseFilter"><span class="filter-icon">🚀</span> Assigned Phase</label>
+              <select id="gapPhaseFilter" class="form-select-sm">
+                <option value="All">All Phases</option>
+                <option value="Phase 1">Phase 1: Foundation</option>
+                <option value="Phase 2">Phase 2: Core Technical</option>
+                <option value="Phase 3">Phase 3: Specialization</option>
+                <option value="Phase 4">Phase 4: Placement Ready</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Active Filter Status & Match Summary -->
+          <div class="gap-active-status-bar" id="gapActiveStatusBar">
+            <div class="active-chips-wrap" id="gapActiveChipsWrap">
+              <span class="active-chips-label">Active Filters:</span>
+              <span class="filter-pill-chip" id="chipRole">Role: Data Analyst</span>
+            </div>
+            <div class="gap-status-count" id="gapQuickCountInfo">
+              Showing 15 of 1,000,000 students
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. SELECTED STUDENT EVALUATION & ROLE MATCH GAUGES -->
+        <div class="skillgap-duo-grid" id="studentSkillAssessmentCards" style="margin-top: 20px;">
+          <!-- Left Role Match & Progress Bars Card -->
+          <div class="panel-card">
+            <div class="panel-header-flex">
+              <div>
+                <h3 class="panel-title">Individual Skill Assessment</h3>
+                <p class="panel-sub-text">Live requirements evaluation for selected student profile across Technical, Domain, and Soft skills.</p>
+              </div>
+              <div>
+                <span id="gapStudentBadge" class="student-tag">Candidate: STU0000001 (Aarav Patel)</span>
+              </div>
+            </div>
+
+            <!-- Categorized Skills Grid (Technical, Domain Knowledge, Soft Skills) -->
+            <div class="skill-categories-container" style="margin-top: 14px;">
+              <!-- 1. TECHNICAL SKILLS -->
+              <div class="skill-category-block">
+                <div class="skill-cat-header">
+                  <div class="skill-cat-title">
+                    <span class="skill-cat-icon">🛠️</span>
+                    <span class="skill-cat-name text-cyan">Technical Skills</span>
+                  </div>
+                  <span class="skill-cat-count badge-cyan" id="techSkillsCountBadge">4/8 active</span>
+                </div>
+                <div class="skills-checkbox-grid cat-tech-grid">
+                  <label class="skill-check-item tech-item">
+                    <input type="checkbox" class="gap-skill-cb" data-category="tech" value="Python" checked>
+                    <span>Python</span>
+                  </label>
+                  <label class="skill-check-item tech-item">
+                    <input type="checkbox" class="gap-skill-cb" data-category="tech" value="Machine Learning">
+                    <span>Machine Learning</span>
+                  </label>
+                  <label class="skill-check-item tech-item">
+                    <input type="checkbox" class="gap-skill-cb" data-category="tech" value="SQL" checked>
+                    <span>SQL</span>
+                  </label>
+                  <label class="skill-check-item tech-item">
+                    <input type="checkbox" class="gap-skill-cb" data-category="tech" value="Data Visualization">
+                    <span>Data Visualization</span>
+                  </label>
+                  <label class="skill-check-item tech-item">
+                    <input type="checkbox" class="gap-skill-cb" data-category="tech" value="Excel" checked>
+                    <span>Excel</span>
+                  </label>
+                  <label class="skill-check-item tech-item">
+                    <input type="checkbox" class="gap-skill-cb" data-category="tech" value="Java">
+                    <span>Java</span>
+                  </label>
+                  <label class="skill-check-item tech-item">
+                    <input type="checkbox" class="gap-skill-cb" data-category="tech" value="Deep Learning">
+                    <span>Deep Learning</span>
+                  </label>
+                  <label class="skill-check-item tech-item">
+                    <input type="checkbox" class="gap-skill-cb" data-category="tech" value="Database Management" checked>
+                    <span>Database Mgmt</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- 2. DOMAIN KNOWLEDGE -->
+              <div class="skill-category-block" style="margin-top: 12px;">
+                <div class="skill-cat-header">
+                  <div class="skill-cat-title">
+                    <span class="skill-cat-icon">🌐</span>
+                    <span class="skill-cat-name text-purple">Domain Knowledge</span>
+                  </div>
+                  <span class="skill-cat-count badge-purple" id="domainSkillsCountBadge">3/6 active</span>
+                </div>
+                <div class="skills-checkbox-grid cat-domain-grid">
+                  <label class="skill-check-item domain-item highlight-genai">
+                    <input type="checkbox" class="gap-skill-cb" data-category="domain" value="GenAI" checked>
+                    <span>✨ GenAI</span>
+                  </label>
+                  <label class="skill-check-item domain-item highlight-fullstack">
+                    <input type="checkbox" class="gap-skill-cb" data-category="domain" value="Full Stack" checked>
+                    <span>⚡ Full Stack</span>
+                  </label>
+                  <label class="skill-check-item domain-item">
+                    <input type="checkbox" class="gap-skill-cb" data-category="domain" value="Cloud Computing">
+                    <span>Cloud Computing</span>
+                  </label>
+                  <label class="skill-check-item domain-item">
+                    <input type="checkbox" class="gap-skill-cb" data-category="domain" value="Big Data / Spark">
+                    <span>Big Data / Spark</span>
+                  </label>
+                  <label class="skill-check-item domain-item">
+                    <input type="checkbox" class="gap-skill-cb" data-category="domain" value="DevOps / CI-CD">
+                    <span>DevOps / CI-CD</span>
+                  </label>
+                  <label class="skill-check-item domain-item">
+                    <input type="checkbox" class="gap-skill-cb" data-category="domain" value="Web Development">
+                    <span>Web Development</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- 3. SOFT SKILLS -->
+              <div class="skill-category-block" style="margin-top: 12px;">
+                <div class="skill-cat-header">
+                  <div class="skill-cat-title">
+                    <span class="skill-cat-icon">🤝</span>
+                    <span class="skill-cat-name text-emerald">Soft Skills</span>
+                  </div>
+                  <span class="skill-cat-count badge-emerald" id="softSkillsCountBadge">3/6 active</span>
+                </div>
+                <div class="skills-checkbox-grid cat-soft-grid">
+                  <label class="skill-check-item soft-item">
+                    <input type="checkbox" class="gap-skill-cb" data-category="soft" value="Communication" checked>
+                    <span>Communication</span>
+                  </label>
+                  <label class="skill-check-item soft-item">
+                    <input type="checkbox" class="gap-skill-cb" data-category="soft" value="Teamwork" checked>
+                    <span>Teamwork</span>
+                  </label>
+                  <label class="skill-check-item soft-item">
+                    <input type="checkbox" class="gap-skill-cb" data-category="soft" value="Problem Solving" checked>
+                    <span>Problem Solving</span>
+                  </label>
+                  <label class="skill-check-item soft-item">
+                    <input type="checkbox" class="gap-skill-cb" data-category="soft" value="Leadership">
+                    <span>Leadership</span>
+                  </label>
+                  <label class="skill-check-item soft-item">
+                    <input type="checkbox" class="gap-skill-cb" data-category="soft" value="Critical Thinking">
+                    <span>Critical Thinking</span>
+                  </label>
+                  <label class="skill-check-item soft-item">
+                    <input type="checkbox" class="gap-skill-cb" data-category="soft" value="Adaptability">
+                    <span>Adaptability</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Role Match Gauge & Progress Bars -->
+            <div class="role-match-container">
+              <div class="circular-match-gauge">
+                <svg viewBox="0 0 100 100" class="gauge-svg">
+                  <circle cx="50" cy="50" r="42" class="gauge-bg"></circle>
+                  <circle cx="50" cy="50" r="42" class="gauge-fill" id="gaugeCircleFill" stroke-dasharray="264" stroke-dashoffset="58"></circle>
+                </svg>
+                <div class="gauge-inner-label">
+                  <span class="g-sub">Role Match</span>
+                  <strong class="g-val" id="roleMatchPctVal">78%</strong>
+                </div>
+              </div>
+
+              <div class="role-progress-bars">
+                <div class="p-bar-item">
+                  <div class="p-bar-label">
+                    <span>Technical Skills</span>
+                    <strong id="techScoreVal">85%</strong>
+                  </div>
+                  <div class="bar-track">
+                    <div class="bar-fill bg-cyan" id="techScoreBar" style="width: 85%;"></div>
+                  </div>
+                </div>
+
+                <div class="p-bar-item">
+                  <div class="p-bar-label">
+                    <span>Domain Knowledge</span>
+                    <strong id="domainScoreVal">70%</strong>
+                  </div>
+                  <div class="bar-track">
+                    <div class="bar-fill bg-purple" id="domainScoreBar" style="width: 70%;"></div>
+                  </div>
+                </div>
+
+                <div class="p-bar-item">
+                  <div class="p-bar-label">
+                    <span>Soft Skills</span>
+                    <strong id="softScoreVal">75%</strong>
+                  </div>
+                  <div class="bar-track">
+                    <div class="bar-fill bg-emerald" id="softScoreBar" style="width: 75%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Learning Recommendations Card -->
+          <div class="panel-card">
+            <div class="panel-header">
+              <h3 class="panel-title">Personalized Learning Recommendations</h3>
+            </div>
+
+            <div class="recommendations-list" id="recommendationsList">
+              <div class="rec-item">
+                <div class="rec-number">1</div>
+                <div class="rec-body">
+                  <strong>Learn Advanced SQL</strong>
+                  <p>Improve data querying, window functions and analytical aggregations.</p>
+                </div>
+              </div>
+
+              <div class="rec-item">
+                <div class="rec-number">2</div>
+                <div class="rec-body">
+                  <strong>Data Visualization</strong>
+                  <p>Master Tableau or Power BI dashboards for institutional placement KPIs.</p>
+                </div>
+              </div>
+
+              <div class="rec-item">
+                <div class="rec-number">3</div>
+                <div class="rec-body">
+                  <strong>Machine Learning Basics</strong>
+                  <p>Build core ML concepts, classification algorithms, and evaluation pipelines.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="rec-footer-btn">
+              <button class="btn btn-outline btn-block" id="viewRoadmapBtn">View Detailed Phased Roadmap ↓</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. COHORT PLACEMENT TRAINING PRIORITIES (AGGREGATE) -->
+        <div class="panel-card" style="margin-top: 24px;" id="cohortPrioritiesSection">
+          <div class="panel-header">
+            <h3 class="panel-title">Cohort Placement Training Priorities (1,000,000 Student Records)</h3>
+            <span class="status-pill" style="background: rgba(6,182,212,0.15); color: var(--accent-cyan);">680,839 Students Need Training</span>
+          </div>
+          <div class="cohort-gap-grid">
+            <div class="cohort-stat-box">
+              <span class="c-title">Web Development</span>
+              <div class="c-val text-rose">48.0% Missing</div>
+              <p>480,112 students need full-stack &amp; web architecture bootcamps.</p>
+            </div>
+            <div class="cohort-stat-box">
+              <span class="c-title">Python Programming</span>
+              <div class="c-val text-rose">48.0% Missing</div>
+              <p>480,049 students require core Python scripting &amp; algorithm drills.</p>
+            </div>
+            <div class="cohort-stat-box">
+              <span class="c-title">Machine Learning</span>
+              <div class="c-val text-amber">48.0% Missing</div>
+              <p>479,866 students require hands-on predictive model training.</p>
+            </div>
+            <div class="cohort-stat-box">
+              <span class="c-title">Cloud Architecture</span>
+              <div class="c-val text-amber">48.0% Missing</div>
+              <p>479,745 students need cloud deployment &amp; containerization practice.</p>
+            </div>
+            <div class="cohort-stat-box">
+              <span class="c-title">SQL Databases</span>
+              <div class="c-val text-cyan">48.0% Missing</div>
+              <p>479,694 students need complex queries and database indexing practice.</p>
+            </div>
+            <div class="cohort-stat-box">
+              <span class="c-title">Java Systems</span>
+              <div class="c-val text-cyan">47.9% Missing</div>
+              <p>479,542 students need enterprise OOP &amp; backend services training.</p>
+            </div>
+          </div>
+          <div class="empty-state-notice" style="margin-top: 16px;">
+            <span><strong>Department Summary Notice:</strong> Department breakdowns are not present in the current dataset schema. Placement preparation recommendations are aggregated across the entire 1,000,000 student body.</span>
+          </div>
+        </div>
+
+        <!-- 4. ALL STUDENTS SKILL GAP & PHASED DEVELOPMENT RESULTS TABLE (SEPARATE AREA) -->
+        <div class="panel-card" style="margin-top: 24px;" id="allStudentsSkillGapSection">
+          <div class="panel-header-flex">
+            <div>
+              <h3 class="panel-title">Student Skill Gap &amp; Phased Development Roster</h3>
+              <p class="panel-sub-text">Search results and filtered student records: identified skill gaps against target industry role, assigned learning phase, and tailored intervention plan.</p>
+            </div>
+            <div class="header-action-group">
+              <button class="btn btn-sm btn-outline" id="exportGapReportCsvBtn">
+                📥 Export Phased Roster (CSV)
+              </button>
+            </div>
+          </div>
+
+          <!-- 4 Development Phase Milestone Overview Cards -->
+          <div class="phase-milestones-grid">
+            <div class="phase-card phase-1-card">
+              <div class="phase-badge-pill phase-1">Phase 1: Foundation</div>
+              <div class="phase-card-title">Core Academic &amp; Logic Grounding</div>
+              <div class="phase-card-desc">For students with Low employability or CGPA &lt; 6.5. Focus on core Python scripting, discrete mathematics, and fundamentals.</div>
+            </div>
+            <div class="phase-card phase-2-card">
+              <div class="phase-badge-pill phase-2">Phase 2: Core Technical</div>
+              <div class="phase-card-title">Full-Stack &amp; Database Competency</div>
+              <div class="phase-card-desc">Intermediate level. Focus on SQL query indexing, Java/OOP, web development, and building 2 portfolio projects.</div>
+            </div>
+            <div class="phase-card phase-3-card">
+              <div class="phase-badge-pill phase-3-badge">Phase 3: Specialization</div>
+              <div class="phase-card-title">Cloud Deployment &amp; ML Pipelines</div>
+              <div class="phase-card-desc">Advanced competency. Focus on Cloud containerization, Machine Learning models, and summer industry internship.</div>
+            </div>
+            <div class="phase-card phase-4-card">
+              <div class="phase-badge-pill phase-4">Phase 4: Placement Ready</div>
+              <div class="phase-card-title">Industry Drives &amp; Mock Technical Rounds</div>
+              <div class="phase-card-desc">High employability readiness. Focus on System Design, Data Structures &amp; Algorithms mock rounds, and corporate interviews.</div>
+            </div>
+          </div>
+
+          <!-- Students Skill Gap & Phase Table -->
+          <div class="table-responsive" style="margin-top: 20px;">
+            <table class="data-table" id="gapStudentsTable">
+              <thead>
+                <tr>
+                  <th>Student ID</th>
+                  <th>Student Name</th>
+                  <th>CGPA / Att.</th>
+                  <th>Recorded Skills</th>
+                  <th>Missing Skill Gap</th>
+                  <th>Employability</th>
+                  <th>Designated Phase &amp; Action Plan</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="gapStudentsTableBody">
+                <tr><td colspan="8" class="loading-td"><div class="table-loading-spinner"></div> Loading cohort skill gap &amp; phase records...</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination Bar -->
+          <div class="pagination-footer" id="gapTablePagination">
+            <span class="pagination-info" id="gapPaginationInfo">Showing 1 to 15 of 1,000,000 records</span>
+            <div class="pagination-controls">
+              <button class="btn btn-sm btn-outline" id="gapPrevPageBtn" disabled>Previous</button>
+              <span class="page-indicator" id="gapPageIndicator">Page 1</span>
+              <button class="btn btn-sm btn-outline" id="gapNextPageBtn">Next</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SCREEN 8: RESULTS & ANALYSIS ==================== -->
+      <section id="portalTab-results" class="portal-tab-view">
+        <div class="portal-header-bar">
+          <div>
+            <h1 class="portal-view-title">Results &amp; Analysis</h1>
+            <p class="portal-view-sub">Model performance, data insights and evaluation metrics.</p>
+          </div>
+          <div class="header-action-group">
+            <button class="btn btn-primary-gradient" id="printOfficialReportTopBtn">
+              🖨️ Print / Save Official Report
+            </button>
+          </div>
+        </div>
+
+        <!-- Analysis Tab Pills -->
+        <div class="analysis-tabs-bar">
+          <button class="tab-pill active" data-subtab="modelPerf">Model Performance</button>
+          <button class="tab-pill" data-subtab="downloadReport">Official Printable Report</button>
+        </div>
+
+        <!-- Main Results Grid: Accuracy Curve vs Metrics + Confusion Matrix -->
+        <div class="results-main-grid" id="modelPerfSubtab">
+          <!-- Left Chart: Accuracy Comparison -->
+          <div class="panel-card">
+            <div class="panel-header-flex">
+              <h3 class="panel-title">Accuracy Comparison</h3>
+              <div class="chart-legend-horizontal">
+                <span class="legend-chip"><span class="chip-color bg-cyan"></span> Logistic Regression</span>
+                <span class="legend-chip"><span class="chip-color bg-purple"></span> Random Forest</span>
+                <span class="legend-chip"><span class="chip-color bg-emerald"></span> XGBoost</span>
+              </div>
+            </div>
+
+            <div class="chart-canvas-wrapper">
+              <canvas id="accuracyChartCanvas" width="600" height="300"></canvas>
+            </div>
+            <div class="chart-xaxis-labels">
+              <span>0</span>
+              <span>10</span>
+              <span>20</span>
+              <span>30</span>
+              <span>40</span>
+              <span>50 Epochs</span>
+            </div>
+          </div>
+
+          <!-- Right Column: Metrics & Confusion Matrix -->
+          <div class="results-right-col">
+            <!-- 4 Evaluation Metric Cards -->
+            <div class="panel-card">
+              <div class="panel-header">
+                <h3 class="panel-title">Evaluation Metrics</h3>
+              </div>
+              <div class="eval-metrics-grid">
+                <div class="eval-metric-box">
+                  <span class="em-label">Accuracy</span>
+                  <strong class="em-val">0.92</strong>
+                </div>
+                <div class="eval-metric-box">
+                  <span class="em-label">Precision</span>
+                  <strong class="em-val">0.89</strong>
+                </div>
+                <div class="eval-metric-box">
+                  <span class="em-label">Recall</span>
+                  <strong class="em-val">0.87</strong>
+                </div>
+                <div class="eval-metric-box">
+                  <span class="em-label">F1 Score</span>
+                  <strong class="em-val">0.88</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Confusion Matrix Heatmap -->
+            <div class="panel-card" style="margin-top: 20px;">
+              <div class="panel-header">
+                <h3 class="panel-title">Confusion Matrix</h3>
+              </div>
+              <div class="confusion-matrix-wrapper">
+                <div class="cm-grid">
+                  <div class="cm-axis-y">
+                    <span>Low</span>
+                    <span>Medium</span>
+                    <span>High</span>
+                  </div>
+                  <div class="cm-cells-matrix">
+                    <div class="cm-cell heat-high" title="Low -> Low: 84%">0.84</div>
+                    <div class="cm-cell heat-low" title="Low -> Medium: 12%">0.12</div>
+                    <div class="cm-cell heat-vlow" title="Low -> High: 4%">0.04</div>
+
+                    <div class="cm-cell heat-low" title="Medium -> Low: 8%">0.08</div>
+                    <div class="cm-cell heat-high" title="Medium -> Medium: 86%">0.86</div>
+                    <div class="cm-cell heat-vlow" title="Medium -> High: 6%">0.06</div>
+
+                    <div class="cm-cell heat-vlow" title="High -> Low: 2%">0.02</div>
+                    <div class="cm-cell heat-low" title="High -> Medium: 7%">0.07</div>
+                    <div class="cm-cell heat-vhigh" title="High -> High: 91%">0.91</div>
+                  </div>
+                </div>
+                <div class="cm-axis-x">
+                  <span>Low</span>
+                  <span>Medium</span>
+                  <span>High</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Download Report Subtab -->
+        <div id="downloadReportSubtab" class="hidden" style="margin-top: 20px;">
+          <div class="panel-card">
+            <div class="panel-header-flex">
+              <div>
+                <h3 class="panel-title">Education Employability Analysis Report</h3>
+                <p class="panel-sub-text">Official executive documentation: cohort analytics, ML model metrics, skill deficiency matrix, and phased student intervention framework.</p>
+              </div>
+              <div class="export-actions-row">
+                <button class="btn btn-primary-gradient" id="exportAuditPdfBtn">
+                  🖨️ Print / Save Official Report (PDF)
+                </button>
+                <button class="btn btn-outline" id="exportCsvBtn">
+                  📥 Download Student CSV
+                </button>
+                <button class="btn btn-outline" id="exportPhasesCsvBtn">
+                  📊 Download Phased Plan CSV
+                </button>
+              </div>
+            </div>
+
+            <!-- Certified Printable Document Container -->
+            <div class="printable-report-card" id="printableAuditReport">
+              <div class="report-header-banner">
+                <div class="report-seal-col">
+                  <div class="seal-emblem">🎓</div>
+                  <div>
+                    <div class="report-brand-name">EDU-PREDICT</div>
+                    <h2 class="report-doc-title">Education Employability Analysis Report</h2>
+                    <p class="report-dept-line">CENTRAL TRAINING &amp; PLACEMENT CELL · DIRECTORATE OF ACADEMIC AFFAIRS</p>
+                  </div>
+                </div>
+                <div class="report-meta-box">
+                  <div><strong>Report Ref:</strong> EDU-PREDICT-OFFICIAL-2026</div>
+                  <div><strong>Academic Year:</strong> 2025–2026</div>
+                  <div><strong>Generated On:</strong> <span id="reportGeneratedDate">October 13, 2026, 6:45 PM</span></div>
+                  <div><strong>Audit Status:</strong> <span class="badge-certified">✓ CERTIFIED OFFICIAL REPORT</span></div>
+                </div>
+              </div>
+
+              <!-- Executive Summary -->
+              <div class="report-section-block">
+                <h4 class="report-sec-title">1. REPORT SUMMARY &amp; SCOPE</h4>
+                <div class="report-narrative-summary">
+                  <p>
+                    This official employability report evaluates student academic achievements, skill indicators, and placement preparedness for the institutional cohort. Data reflects verified academic records including CGPA, attendance, completed technical projects, internships, and certified skill proficiencies.
+                  </p>
+                  <div class="report-scope-details">
+                    <div><strong>Total Student Records Included:</strong> <span id="repTotalStudentsAssessed">1,000,000</span> Records</div>
+                    <div><strong>Cohort &amp; Department Scope:</strong> Institutional Student Body (Department breakdown is unavailable in the current dataset schema; analysis encompasses the complete institutional cohort)</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Employability Category Distribution -->
+              <div class="report-section-block">
+                <h4 class="report-sec-title">2. EMPLOYABILITY CATEGORY DISTRIBUTION</h4>
+                <div class="report-summary-kpis">
+                  <div class="r-kpi">
+                    <span class="r-kpi-num" id="repTotalAssessed">1,000,000</span>
+                    <span class="r-kpi-lbl">Total Students Assessed</span>
+                  </div>
+                  <div class="r-kpi">
+                    <span class="r-kpi-num text-cyan" id="repHighCount">31.9%</span>
+                    <span class="r-kpi-lbl">High Employability (319,161)</span>
+                  </div>
+                  <div class="r-kpi">
+                    <span class="r-kpi-num text-purple" id="repMedCount">63.1%</span>
+                    <span class="r-kpi-lbl">Medium Employability (630,906)</span>
+                  </div>
+                  <div class="r-kpi">
+                    <span class="r-kpi-num text-rose" id="repLowCount">5.0%</span>
+                    <span class="r-kpi-lbl">Low Employability (49,933)</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Predictive Model Evaluation Metrics -->
+              <div class="report-section-block">
+                <h4 class="report-sec-title">3. MODEL EVALUATION METRICS (ACTUAL EVALUATION RESULTS)</h4>
+                <div class="report-metrics-table-wrapper">
+                  <table class="report-table">
+                    <thead>
+                      <tr>
+                        <th>Algorithm</th>
+                        <th>Classification Accuracy</th>
+                        <th>Precision</th>
+                        <th>Recall</th>
+                        <th>F1 Score</th>
+                        <th>Validation Standard</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Random Forest Classifier</strong></td>
+                        <td>92.4%</td>
+                        <td>0.89</td>
+                        <td>0.87</td>
+                        <td>0.88</td>
+                        <td><span class="pill-pass">Production Benchmark</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Gradient Boosted Trees (GBT)</strong></td>
+                        <td>94.8%</td>
+                        <td>0.91</td>
+                        <td>0.90</td>
+                        <td>0.91</td>
+                        <td><span class="pill-pass">High Readiness Passed</span></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Logistic Regression Baseline</strong></td>
+                        <td>81.2%</td>
+                        <td>0.79</td>
+                        <td>0.77</td>
+                        <td>0.78</td>
+                        <td><span class="pill-pass">Baseline Model</span></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <!-- Cohort Skill Gap Summary -->
+              <div class="report-section-block">
+                <h4 class="report-sec-title">4. SKILL GAP SUMMARY (680,839 STUDENTS REQUIRING TARGETED DEVELOPMENT)</h4>
+                <div class="report-gaps-grid">
+                  <div class="r-gap-item">
+                    <strong>Web Development:</strong>
+                    <span>480,112 students deficient (48.01%) · Full-Stack &amp; Web Frameworks</span>
+                  </div>
+                  <div class="r-gap-item">
+                    <strong>Python Programming:</strong>
+                    <span>480,049 students deficient (48.00%) · Algorithmic &amp; Scripting Drills</span>
+                  </div>
+                  <div class="r-gap-item">
+                    <strong>Machine Learning:</strong>
+                    <span>479,866 students deficient (47.99%) · Predictive Modeling Practice</span>
+                  </div>
+                  <div class="r-gap-item">
+                    <strong>Cloud Architecture:</strong>
+                    <span>479,745 students deficient (47.97%) · Cloud Containerization &amp; DevOps</span>
+                  </div>
+                  <div class="r-gap-item">
+                    <strong>SQL Databases:</strong>
+                    <span>479,694 students deficient (47.97%) · Relational Indexing &amp; Query Tuning</span>
+                  </div>
+                  <div class="r-gap-item">
+                    <strong>Java Systems:</strong>
+                    <span>479,542 students deficient (47.95%) · Enterprise OOP &amp; Backend Engineering</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4-Phase Student Development Framework -->
+              <div class="report-section-block">
+                <h4 class="report-sec-title">5. INSTITUTIONAL 4-PHASE DEVELOPMENT FRAMEWORK</h4>
+                <div class="report-phases-timeline">
+                  <div class="r-phase">
+                    <strong>Phase 1: Foundation (Weeks 1–6)</strong>
+                    <p>Focus on foundational academic recovery, discrete problem solving, core Python scripting, and attendance restoration.</p>
+                  </div>
+                  <div class="r-phase">
+                    <strong>Phase 2: Core Technical (Weeks 7–16)</strong>
+                    <p>Focus on relational database querying (SQL), object-oriented programming (Java/Python), full-stack basics, and portfolio project creation.</p>
+                  </div>
+                  <div class="r-phase">
+                    <strong>Phase 3: Specialization (Weeks 17–28)</strong>
+                    <p>Focus on cloud environments, predictive model pipelines, summer industry internships, and professional certification acquisition.</p>
+                  </div>
+                  <div class="r-phase">
+                    <strong>Phase 4: Placement Ready (Weeks 29–36)</strong>
+                    <p>Focus on system design reviews, technical interview simulations, verbal communication polishing, and on-campus recruitment drives.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Report Limitations and Data Notes -->
+              <div class="report-section-block">
+                <h4 class="report-sec-title">6. REPORT LIMITATIONS AND DATA NOTES</h4>
+                <div class="report-notes-box">
+                  <ul class="report-notes-list">
+                    <li><strong>Decision-Support Tool:</strong> All employability indicators and category allocations are computed from academic records, attendance history, project portfolios, internships, and verified skill counts for advisory purposes.</li>
+                    <li><strong>Department Information:</strong> Department-level classifications are not present in the current dataset schema; values reflect the institution-wide cohort.</li>
+                    <li><strong>No Guaranteed Outcomes:</strong> Readiness classifications identify development priorities and intervention needs; they do not represent absolute guarantees of corporate employment.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Official Sign-off Signatures -->
+              <div class="report-signoff-row">
+                <div class="sign-block">
+                  <div class="sign-line">Dr. Rajesh Kumar</div>
+                  <div class="sign-role">Head of Placement &amp; Training</div>
+                </div>
+                <div class="sign-block">
+                  <div class="sign-line">Prof. S. Meenakshi</div>
+                  <div class="sign-role">Dean of Academic Affairs</div>
+                </div>
+                <div class="sign-block">
+                  <div class="sign-line">Dr. K. V. Ramanathan</div>
+                  <div class="sign-role">Principal / Institutional Head</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== REPORTS TAB ==================== -->
+      <section id="portalTab-reports" class="portal-tab-view">
+        <div class="portal-header-bar">
+          <div>
+            <h1 class="portal-view-title">Placement Reports</h1>
+            <p class="portal-view-sub">Comprehensive audit logs and cohort placement readiness transcripts.</p>
+          </div>
+        </div>
+
+        <div class="panel-card">
+          <div class="panel-header">
+            <h3 class="panel-title">Placement Officer Generated Reports</h3>
+          </div>
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Report Name</th>
+                  <th>Scope</th>
+                  <th>Generated Date</th>
+                  <th>File Format</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Institutional Cohort Employability Audit</strong></td>
+                  <td>1,000,000 Student Records</td>
+                  <td>Today</td>
+                  <td><span class="type-pill">CSV</span></td>
+                  <td><button class="btn btn-sm btn-outline download-report-btn" data-report-type="cohort-audit">Download</button></td>
+                </tr>
+                <tr>
+                  <td><strong>Student Development Phased Allocation Report</strong></td>
+                  <td>4 Training Phases (All Students)</td>
+                  <td>Today</td>
+                  <td><span class="type-pill">CSV</span></td>
+                  <td><button class="btn btn-sm btn-outline download-report-btn" data-report-type="phased-roster">Download</button></td>
+                </tr>
+                <tr>
+                  <td><strong>Skill Deficiency Matrix by Target Role</strong></td>
+                  <td>4 Industry Profiles</td>
+                  <td>Today</td>
+                  <td><span class="type-pill">JSON</span></td>
+                  <td><button class="btn btn-sm btn-outline download-report-btn" data-report-type="skill-matrix">Download</button></td>
+                </tr>
+                <tr>
+                  <td><strong>Hadoop HDFS Storage Ingestion Log</strong></td>
+                  <td>/education_employability/raw</td>
+                  <td>Active</td>
+                  <td><span class="type-pill">LOG</span></td>
+                  <td><button class="btn btn-sm btn-outline download-report-btn" data-report-type="hdfs-log">Download</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== SETTINGS TAB ==================== -->
+      <section id="portalTab-settings" class="portal-tab-view">
+        <div class="portal-header-bar">
+          <div>
+            <h1 class="portal-view-title">Settings</h1>
+            <p class="portal-view-sub">Manage placement cell profile, target role configurations, and HDFS parameters.</p>
+          </div>
+        </div>
+
+        <div class="panel-card" style="max-width: 720px;">
+          <h3 class="panel-title">Placement Officer Profile</h3>
+          <div class="form-group" style="margin-top: 16px;">
+            <label>Full Name</label>
+            <input type="text" id="settingsName" value="Placement Officer" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>College Email</label>
+            <input type="email" id="settingsEmail" value="placement@college.edu" class="form-input" disabled>
+          </div>
+          <div class="form-group">
+            <label>Institution / Placement Cell</label>
+            <input type="text" id="settingsInstitution" value="Apex College of Engineering" class="form-input">
+          </div>
+          <div class="form-group">
+            <label>Target HDFS Path</label>
+            <input type="text" id="settingsHdfs" value="/education_employability/raw" class="form-input" disabled>
+          </div>
+          <button class="btn btn-primary-gradient" id="saveSettingsBtn">Save Settings</button>
+          <span id="settingsSavedMsg" class="success-note hidden">Settings saved successfully!</span>
+        </div>
+      </section>
+
+    </main>
+  </div> <!-- End #portalContainer -->
+
+  <!-- ========================================================
+       FORGOT PASSWORD MODAL (Accessible from Screen 3)
+  ======================================================== -->
+  <div class="modal-overlay hidden" id="forgotPasswordModal">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3>Reset Placement Officer Password</h3>
+        <button class="modal-close-btn" id="closeForgotModalBtn">×</button>
+      </div>
+      <div class="modal-body">
+        <p>Enter your registered college placement email address to initiate institutional password recovery.</p>
+        <div class="form-group" style="margin-top: 14px;">
+          <label for="forgotEmailInput">College Email</label>
+          <input type="email" id="forgotEmailInput" placeholder="placement@college.edu" value="placement@college.edu">
+        </div>
+        <div id="forgotModalMsg" class="auth-alert hidden"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="cancelForgotBtn">Cancel</button>
+        <button class="btn btn-primary-gradient" id="submitForgotBtn">Send Reset Instructions</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       STUDENT DETAIL MODAL (From Academic Records Table)
+  ======================================================== -->
+  <div class="modal-overlay hidden" id="studentDetailModal">
+    <div class="modal-dialog" style="max-width: 620px;">
+      <div class="modal-header">
+        <div>
+          <h3 id="modalStudentName" style="font-size: 18px; margin-bottom: 2px;">Student Academic Dossier</h3>
+          <span style="font-size: 12px; color: var(--accent-cyan); font-family: monospace;" id="modalStudentId">STU0000001</span>
+        </div>
+        <button class="modal-close-btn" id="closeStudentModalBtn">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="student-detail-grid">
+          <div class="sd-item">
+            <span class="sd-label">CGPA (0–10)</span>
+            <span class="sd-val" id="modalCgpa">8.55</span>
+          </div>
+          <div class="sd-item">
+            <span class="sd-label">Attendance Record</span>
+            <span class="sd-val" id="modalAttendance">92.0%</span>
+          </div>
+          <div class="sd-item">
+            <span class="sd-label">Projects Completed</span>
+            <span class="sd-val" id="modalProjects">4</span>
+          </div>
+          <div class="sd-item">
+            <span class="sd-label">Internships Completed</span>
+            <span class="sd-val" id="modalInternships">1</span>
+          </div>
+          <div class="sd-item">
+            <span class="sd-label">Verified Certifications</span>
+            <span class="sd-val" id="modalCerts">2</span>
+          </div>
+          <div class="sd-item">
+            <span class="sd-label">Employability Status</span>
+            <span class="sd-val" id="modalLevel">High Employability (82/100)</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 16px;">
+          <span class="sd-label">Verified Technical Skills</span>
+          <div class="sd-skills-list" id="modalSkillsList">
+            <span class="sd-skill-pill">Python</span>
+            <span class="sd-skill-pill">SQL</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="modalPredictBtn">🎯 Test Prediction</button>
+        <button class="btn btn-primary-gradient" id="modalGapBtn">🧩 Analyze Skill Gaps</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript Logic -->
+  <script src="script.js?v=2.3"></script>
+</body>
+</html>
